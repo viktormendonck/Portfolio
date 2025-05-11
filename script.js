@@ -3,7 +3,8 @@ fetch('projects.json')
   .then(data => {
     const grouped = groupByType(data);
     renderGroupedProjects(grouped);
-  });
+  })
+  .catch(err => console.error("Error loading projects.json:", err));
 
 function groupByType(projects) {
   const map = {};
@@ -52,4 +53,3 @@ function renderGroupedProjects(groupedProjects) {
 function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
-
