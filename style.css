@@ -1,0 +1,29 @@
+body {
+    font-family: sans-serif;
+    background: #1e1e1e;
+    color: #fff;
+    padding: 2rem;
+  }
+  
+  #projects-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+  .project {
+    background: #2c2c2c;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  }
+  
+  .project img {
+    max-width: 100%;
+    border-radius: 6px;
+  }
+  
+  .project a {
+    color: #61dafb;
+    text-decoration: none;
+}
