@@ -27,25 +27,32 @@ body {
     color: #61dafb;
     text-decoration: none;
 }
-#filter-buttons {
-  margin-bottom: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+.project-group {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin-bottom: 2rem;
 }
 
-.filter-btn {
-  background: #444;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.2s;
+h2 {
+  font-size: 1.8rem;
+  margin-top: 2rem;
+  border-bottom: 2px solid #444;
+  padding-bottom: 0.5rem;
 }
 
-.filter-btn.active,
-.filter-btn:hover {
-  background: #61dafb;
-  color: black;
+.project {
+  background: #2c2c2c;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.project img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.project h3 {
+  margin: 0.5rem 0;
 }
