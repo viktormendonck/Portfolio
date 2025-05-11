@@ -34,7 +34,7 @@ function renderGroupedProjects(groupedProjects) {
       const div = document.createElement('div');
       div.className = 'project';
       div.innerHTML = `
-        <img src="assets/images/test.png" alt="${project.title}">
+        <img src="Assets/Images/test.png" alt="${project.title}">
         <h3>${project.title}</h3>
         <p>${project.description}</p>
         <p>
