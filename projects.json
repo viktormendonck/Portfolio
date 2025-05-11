@@ -1,7 +1,7 @@
 [
     {
       "title": "Cool Game Project",
-      "image": "assets/images/cool_game.png",
+      "image": "assets/images/test.png",
       "github": "https://github.com/yourname/cool-game",
       "link": "https://yourname.github.io/cool-game",
       "description": "A pixel-art platformer with tight controls.",
