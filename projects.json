@@ -4,13 +4,31 @@
       "image": "assets/images/cool_game.png",
       "github": "https://github.com/yourname/cool-game",
       "link": "https://yourname.github.io/cool-game",
-      "description": "A pixel-art platformer with tight controls."
+      "description": "A pixel-art platformer with tight controls.",
+      "type": "Solo"
     },
     {
       "title": "VR Space Shooter",
       "image": "assets/images//cool-game.png",
       "github": "https://github.com/yourname/vr-shooter",
       "link": "https://yourname.github.io/vr-shooter",
-      "description": "An immersive VR shooter game made with Unity."
+      "description": "An immersive VR shooter game made with Unity.",
+      "type": "GameJam"
+    },
+    {
+      "title": "VR Space Shooter",
+      "image": "assets/images//cool-game.png",
+      "github": "https://github.com/yourname/vr-shooter",
+      "link": "https://yourname.github.io/vr-shooter",
+      "description": "An immersive VR shooter game made with Unity.",
+      "type": "GameJam"
+    },
+    {
+      "title": "VR Space Shooter",
+      "image": "assets/images//cool-game.png",
+      "github": "https://github.com/yourname/vr-shooter",
+      "link": "https://yourname.github.io/vr-shooter",
+      "description": "An immersive VR shooter game made with Unity.",
+      "type": "Group"
     }
   ]
