@@ -1,38 +1,67 @@
 [
   {
+    "title": "Nespad",
+    "image": "assets/images/Nespad.png",
+    "link": "",
+    "github": "https://github.com/Akadeax/nespad",
+    "description": "A notepad made for the NES in 6502 assembly",
+    "order": "0",
+    "type": "Group Projects",
+    "language":"6502Assembly"
+  },
+  {
+    "title": "Nespad",
+    "image": "assets/images/Nespad.png",
+    "link": "",
+    "github": "https://github.com/Akadeax/nespad",
+    "description": "A notepad made for the NES in 6502 assembly",
+    "order": "0",
+    "type": "Group Projects"
+  },
+
+
+  {
     "title": "Poseidon's Moving Company",
     "image": "assets/images//pomoco.png",
     "github": "https://github.com/Akadeax/unwrap-jam-2024",
     "link": "https://akadeax.itch.io/poseidons-moving-company",
-    "description": "My first gamejam, the theme was Keep moving so we went in the direction of sharks, as they cant stop swimming, here I learnt mostly what \"Scope Creep\" is.",
+    "description": "My first gamejam, A game about helping the aquatic population move houses.",
     "order": "2",
     "Date" : "Febuary 2024",
-    "type": "GameJam"
+    "type": "GameJam",
+    "page": "project-pages/pomoco.html",
+    "language": "GdScript"
   },
-    {
-      "title": "Cool Game Project",
-      "image": "assets/images/test.png",
-      "github": "",
-      "link": "https://yourname.github.io/cool-game",
-      "description": "A pixel-art platformer with tight controls.",
-      "type": "Solo"
-    },
-    {
-      "title": "VR Space Shooter",
-      "image": "assets/images/test.png",
-      "github": "https://github.com/yourname/vr-shooter",
-      "link": "https://yourname.github.io/vr-shooter",
-      "description": "An immersive VR shooter game made with Unity.",
-      "order": "1",
-      "Date" : "Febuary 2024",
-      "type": "GameJam"
-    },
-    {
-      "title": "VR Space Shooter",
-      "image": "assets/images/test.png",
-      "github": "https://github.com/yourname/vr-shooter",
-      "link": "https://yourname.github.io/vr-shooter",
-      "description": "An immersive VR shooter game made with Unity.",
-      "type": "Group"
-    }
+  {
+    "title": "The Boy And The Brush",
+    "image": "assets/images/tbatb.png",
+    "github": "https://github.com/Akadeax/unwrap-jam-2025",
+    "link": "https://inquisitiveoctopus.itch.io/the-boy-and-the-brush",
+    "description": "A short 2d platformer where you play as a boy repainting the background of the world",
+    "order": "1",
+    "Date" : "April 2025",
+    "type": "GameJam",
+    "language": "UnrealBP"
+  },
+
+
+  {
+    "title": "Vulkan 3d modeler",
+    "image": "",
+    "github": "https://github.com/viktormendonck/3D-Modeler-Vulkan",
+    "link": "",
+    "description": "A very simple modeling software in my own c++ vulkan graphics engine",
+    "type": "Solo Projects",
+    "language":"C++"
+  },
+  {
+    "title": "CppDigger",
+    "image": "",
+    "github": "https://github.com/viktormendonck/CppDiggerProg4",
+    "link": "",
+    "description": "A Recreation of the game Digger(1983), in a custom made game engine",
+    "type": "Solo Projects",
+    "language":"C++"
+  }
+  
   ]
