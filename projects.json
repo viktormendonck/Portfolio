@@ -8,8 +8,18 @@
       "type": "Solo"
     },
     {
+      "title": "Poseidon's Moving Company",
+      "image": "assets/images//pomoco.png",
+      "github": "https://github.com/Akadeax/unwrap-jam-2024",
+      "link": "https://akadeax.itch.io/poseidons-moving-company",
+      "description": "My first gamejam, the theme was Keep moving so we went in the direction of sharks, as they cant stop swimming, here I learnt mostly what \"Scope Creep\" is.",
+      "order": "0",
+      "Date" : "Febuary 2024",
+      "type": "GameJam"
+    },
+    {
       "title": "VR Space Shooter",
-      "image": "assets/images//cool-game.png",
+      "image": "assets/images/test.png",
       "github": "https://github.com/yourname/vr-shooter",
       "link": "https://yourname.github.io/vr-shooter",
       "description": "An immersive VR shooter game made with Unity.",
@@ -17,15 +27,7 @@
     },
     {
       "title": "VR Space Shooter",
-      "image": "assets/images//cool-game.png",
-      "github": "https://github.com/yourname/vr-shooter",
-      "link": "https://yourname.github.io/vr-shooter",
-      "description": "An immersive VR shooter game made with Unity.",
-      "type": "GameJam"
-    },
-    {
-      "title": "VR Space Shooter",
-      "image": "assets/images//cool-game.png",
+      "image": "assets/images/test.png",
       "github": "https://github.com/yourname/vr-shooter",
       "link": "https://yourname.github.io/vr-shooter",
       "description": "An immersive VR shooter game made with Unity.",
