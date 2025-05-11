@@ -14,14 +14,14 @@ body {
   .back-button {
     display: inline-block;
     margin-bottom: 1rem;
-    color: #61dafb;
+    color: #c94343;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.2s;
   }
   
   .back-button:hover {
-    color: #ffffff;
+    color: #ecb0b0;
   }
   
   h1 {
@@ -30,7 +30,7 @@ body {
   }
   
   .date {
-    color: #aaa;
+    color: #e78181;
     margin-bottom: 1rem;
   }
   

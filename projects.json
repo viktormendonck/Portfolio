@@ -4,22 +4,24 @@
     "image": "assets/images/Nespad.png",
     "link": "",
     "github": "https://github.com/Akadeax/nespad",
-    "description": "A notepad made for the NES in 6502 assembly",
+    "description": "A notepad made for the NES in 6502 assembly.",
     "order": "0",
+    "Date" : "December 2024",
     "type": "Group Projects",
-    "language":"6502Assembly"
+    "language":"6502Assembly",
+    "page": "project-pages/pomoco.html"
   },
   {
-    "title": "Nespad",
-    "image": "assets/images/Nespad.png",
-    "link": "",
-    "github": "https://github.com/Akadeax/nespad",
-    "description": "A notepad made for the NES in 6502 assembly",
-    "order": "0",
-    "type": "Group Projects"
+    "title": "GobGobKnight",
+    "image": "assets/images/ggk.png",
+    "link": "https://lazage.itch.io/group14goblinknight",
+    "github": "",
+    "description": "An adventure game where you combine and detach your goblin selves.",
+    "order": "1",
+    "type": "Group Projects",
+    "language":"C++",
+    "page": "project-pages/pomoco.html"
   },
-
-
   {
     "title": "Poseidon's Moving Company",
     "image": "assets/images//pomoco.png",
@@ -29,8 +31,8 @@
     "order": "2",
     "Date" : "Febuary 2024",
     "type": "GameJam",
-    "page": "project-pages/pomoco.html",
-    "language": "GdScript"
+    "language": "GdScript",
+    "page": "project-pages/pomoco.html"
   },
   {
     "title": "The Boy And The Brush",
@@ -41,7 +43,8 @@
     "order": "1",
     "Date" : "April 2025",
     "type": "GameJam",
-    "language": "UnrealBP"
+    "language": "UnrealBP",
+    "page": "project-pages/pomoco.html"
   },
 
 
@@ -52,7 +55,8 @@
     "link": "",
     "description": "A very simple modeling software in my own c++ vulkan graphics engine",
     "type": "Solo Projects",
-    "language":"C++"
+    "language":"C++",
+    "page": "project-pages/pomoco.html"
   },
   {
     "title": "CppDigger",
@@ -61,7 +65,8 @@
     "link": "",
     "description": "A Recreation of the game Digger(1983), in a custom made game engine",
     "type": "Solo Projects",
-    "language":"C++"
+    "language":"C++",
+    "page": "project-pages/pomoco.html"
   }
   
   ]
