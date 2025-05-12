@@ -28,7 +28,7 @@ const languageColors = {
   "GdScript": "#3572A5",
   "C++": "#f34b7d",
   "UnrealBP": "#a5e1eb",
-  "6502Assembly": "#e28743",
+  "6502 Assembly": "#e28743",
   "html":"#33874b"
   // add more as needed
 };
