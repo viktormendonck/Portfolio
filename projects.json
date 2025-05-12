@@ -34,8 +34,7 @@
     "Date" : "Febuary 2024",
     "type": "GameJam",
     "language": "GdScript",
-    "page": "project-pages/pomoco.html",
-    "typeDescription": "The Gamejams I've joined over the years"
+    "page": "project-pages/pomoco.html"
   },
   {
     "title": "The Boy And The Brush",
@@ -47,7 +46,8 @@
     "Date" : "April 2025",
     "type": "GameJam",
     "language": "UnrealBP",
-    "page": "project-pages/tbatb.html"
+    "page": "project-pages/tbatb.html",
+    "typeDescription": "The Gamejams I've joined over the years"
   },
   {
     "title": "Vulkan 3d modeler",
