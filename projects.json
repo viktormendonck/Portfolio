@@ -10,7 +10,7 @@
     "type": "Group Projects",
     "language":"6502 Assembly",
     "page": "project-pages/nespad.html",
-    "typeDescription": "Projects i made in groups, whether it is school or otherwise."
+    "typeDescription": "Projects I made in groups, whether it is school or otherwise."
   },
   {
     "title": "GobGobKnight",
@@ -29,7 +29,7 @@
     "image": "assets/images//pomoco.png",
     "github": "https://github.com/Akadeax/unwrap-jam-2024",
     "link": "https://akadeax.itch.io/poseidons-moving-company",
-    "description": "My first gamejam, A game about helping the aquatic population move houses.",
+    "description": "My first game jam, A game about helping the aquatic population move houses.",
     "order": "1",
     "Date" : "February 2024",
     "type": "Game Jam",
