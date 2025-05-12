@@ -34,7 +34,8 @@
     "Date" : "Febuary 2024",
     "type": "GameJam",
     "language": "GdScript",
-    "page": "project-pages/pomoco.html"
+    "page": "project-pages/pomoco.html",
+    "typeDescription": "The Gamejams I've joined over the years"
   },
   {
     "title": "The Boy And The Brush",
