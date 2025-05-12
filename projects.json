@@ -10,7 +10,7 @@
     "type": "Group Projects",
     "language":"6502 Assembly",
     "page": "project-pages/nespad.html",
-    "typeDescription": "Projects i made in groups, whether it is school or otherwise"
+    "typeDescription": "Projects i made in groups, whether it is school or otherwise."
   },
   {
     "title": "GobGobKnight",
@@ -31,9 +31,9 @@
     "link": "https://akadeax.itch.io/poseidons-moving-company",
     "description": "My first gamejam, A game about helping the aquatic population move houses.",
     "order": "1",
-    "Date" : "Febuary 2024",
-    "type": "GameJam",
-    "language": "GdScript",
+    "Date" : "February 2024",
+    "type": "Game Jam",
+    "language": "GDScript",
     "page": "project-pages/pomoco.html"
   },
   {
@@ -41,33 +41,33 @@
     "image": "assets/images/tbatb.png",
     "github": "https://github.com/Akadeax/unwrap-jam-2025",
     "link": "https://inquisitiveoctopus.itch.io/the-boy-and-the-brush",
-    "description": "A short 2d platformer where you play as a boy repainting the background of the world",
+    "description": "A short 2D platformer where you play as a boy repainting the background of the world.",
     "order": "0",
     "Date" : "April 2025",
-    "type": "GameJam",
-    "language": "UnrealBP",
+    "type": "Game Jam",
+    "language": "Unreal Blueprints",
     "page": "project-pages/tbatb.html",
-    "typeDescription": "The Gamejams I've joined over the years"
+    "typeDescription": "The game jams I've joined over the years."
   },
   {
-    "title": "Vulkan 3d modeler",
+    "title": "Vulkan 3d Modeler",
     "image": "assets/images/vulkan.png",
     "github": "https://github.com/viktormendonck/3D-Modeler-Vulkan",
     "link": "",
-    "description": "A very simple modeling software in my own c++ vulkan graphics engine",
+    "description": "A very simple modeling software in my own C++ Vulkan graphics engine",
     "type": "Solo Projects",
     "Date" : "June 2024",
     "language":"C++",
     "order": "0",
     "page": "project-pages/vulkanmodeler.html",
-    "typeDescription": "Whilst I've made a bunch of small projects for school there isnt much that I really qualify as good enough. For the rest you can find more projects on my github."
+    "typeDescription": "While I’ve made a bunch of small school projects, there aren’t many I consider good enough to feature here. You can find the rest on my GitHub."
   },
   {
     "title": "CppDigger",
     "image": "assets/images/cppdigger.png",
     "github": "https://github.com/viktormendonck/CppDiggerProg4",
     "link": "",
-    "description": "A Recreation of the game Digger(1983), in a custom made game engine",
+    "description": "A recreation of the game Digger(1983), built in a custom-made game engine.",
     "type": "Solo Projects",
     "Date" : "June 2024",
     "language":"C++",
@@ -79,7 +79,7 @@
     "image": "assets/images/website.png",
     "github": "https://github.com/viktormendonck/Portfolio",
     "link": "https://viktormendonck.github.io/Portfolio/",
-    "description": "The website you are on right now",
+    "description": "The very website you're viewing right now.",
     "type": "Solo Projects",
     "Date" : "May 2025",
     "language":"html",

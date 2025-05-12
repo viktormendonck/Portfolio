@@ -25,9 +25,9 @@ function groupByType(projects) {
 const languageColors = {
   "C#": "#9146ff",
   "Python": "#3572A5",
-  "GdScript": "#3572A5",
+  "GDScript": "#3572A5",
   "C++": "#f34b7d",
-  "UnrealBP": "#a5e1eb",
+  "Unreal Blueprints": "#a5e1eb",
   "6502 Assembly": "#e28743",
   "html":"#33874b"
   // add more as needed
