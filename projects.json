@@ -9,7 +9,8 @@
     "Date" : "December 2024",
     "type": "Group Projects",
     "language":"6502Assembly",
-    "page": "project-pages/nespad.html"
+    "page": "project-pages/nespad.html",
+    "typeDescription": "Projects i made in groups, whether it is school or otherwise"
   },
   {
     "title": "GobGobKnight",
@@ -49,23 +50,24 @@
   },
   {
     "title": "Vulkan 3d modeler",
-    "image": "",
+    "image": "assets/images/vulkan.png",
     "github": "https://github.com/viktormendonck/3D-Modeler-Vulkan",
     "link": "",
     "description": "A very simple modeling software in my own c++ vulkan graphics engine",
     "type": "Solo Projects",
+    "Date" : "June 2024",
     "language":"C++",
-    "page": "project-pages/pomoco.html"
+    "page": "project-pages/vulkanmodeler.html",
+    "typeDescription": "Whilst I've made a bunch of small projects for school there isnt much that I really qualify as good enough. For the rest you can find more projects on my github."
   },
   {
     "title": "CppDigger",
-    "image": "",
+    "image": "assets/images/cppdigger.png",
     "github": "https://github.com/viktormendonck/CppDiggerProg4",
     "link": "",
     "description": "A Recreation of the game Digger(1983), in a custom made game engine",
     "type": "Solo Projects",
     "language":"C++",
-    "page": "project-pages/pomoco.html"
+    "page": "project-pages/cppdigger.html"
   }
-  
-  ]
+]

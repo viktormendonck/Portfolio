@@ -43,14 +43,22 @@ function renderGroupedProjects(groupedProjects) {
     heading.textContent = capitalize(type);
     section.appendChild(heading);
 
+    // ✅ Add category description if available on the first project
+    const firstProject = groupedProjects[type][0];
+    if (firstProject.typeDescription) {
+      const description = document.createElement('p');
+      description.className = 'type-description';
+      description.textContent = firstProject.typeDescription;
+      section.appendChild(description);
+    }
+
     const group = document.createElement('div');
     group.className = 'project-group';
 
     groupedProjects[type].forEach(project => {
       const content = document.createElement('div');
       content.className = 'project';
-    
-      // Only include links if they are non-empty
+
       let linksHTML = '';
       if (project.link) {
         linksHTML += `<a href="${project.link}" target="_blank">Project</a>`;
@@ -59,12 +67,12 @@ function renderGroupedProjects(groupedProjects) {
         if (linksHTML) linksHTML += ' | ';
         linksHTML += `<a href="${project.github}" target="_blank">Code</a>`;
       }
-    
-      // Conditionally include the image tag
+
       const imageHTML = project.image
         ? `<img src="${project.image}" alt="${project.title}">`
         : '';
-        const languageBadge = project.language ? `
+
+      const languageBadge = project.language ? `
         <span class="language-badge" style="background-color: ${languageColors[project.language] || '#666'}">
           ${project.language}
         </span>` : '';
@@ -73,14 +81,13 @@ function renderGroupedProjects(groupedProjects) {
         ${imageHTML}
         <h3>${project.title}</h3>
         <div class="meta-line">
-        <p><strong>Date:</strong> ${project.Date || "Unknown"}</p>
-        ${languageBadge}
+          <p><strong>Date:</strong> ${project.Date || "Unknown"}</p>
+          ${languageBadge}
         </div>
         <p>${project.description}</p>
-    <p>${linksHTML}</p>
-  `;
-    
-      // If a custom project page is provided, wrap the content in a clickable link
+        <p>${linksHTML}</p>
+      `;
+
       if (project.page) {
         const linkWrapper = document.createElement('a');
         linkWrapper.href = project.page;
@@ -92,12 +99,12 @@ function renderGroupedProjects(groupedProjects) {
         group.appendChild(content);
       }
     });
-    
 
     section.appendChild(group);
     container.appendChild(section);
   });
 }
+
 
 function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
