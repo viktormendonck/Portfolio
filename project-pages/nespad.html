@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Posseidon's Moving Company</title>
+  <title>Nespad</title>
   <link rel="stylesheet" href="template.css" />
 </head>
 <body>
@@ -13,7 +13,7 @@
 
   <div class="page-layout">
     <aside class="sidebar">
-        <h2>Viktor Mendonck</h2>
+        <h2>NesPad</h2>
         <p><strong>Members:</strong> 2</p>
         <p><strong>Language:</strong> 6502 assembly</p>
         <p><strong>GitHub:</strong> <a href="https://github.com/Akadeax/nespad" target="_blank">github</a></p>
@@ -39,9 +39,6 @@
         <br><br>
         and if that wasnt enough features for you modern folks, It can even have 4 different collors though you can only change colors per line of text.
       </p>
-      
-
-
       <div class="presentation-container">
         <iframe src="https://1drv.ms/p/c/8b91977f7ed4cae8/IQTXdNN_qsuPTKkE17Tk5NAnATsFks2-FZvC9SrHTkv-9zk?em=2&amp;wdAr=1.7777777777777777" 
                 width="476px" height="288px" frameborder="0">This is an embedded 
@@ -49,6 +46,39 @@
                 presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.
         </iframe>
       </div>
+      <p class="description">
+        To this day the nespad remains one of my favorite projects, it was made for the course Retro Games and Emulator Programming given by Tom Tesh.<br>
+        Whilst in the beginning it was a mess to wrap my head around assembly it quickly turned into a fun puzzle of saving every possible bit to squeeze out as much usable memory as we could.<br>
+        <br>For Example this is how we planned out the entirety of the saveable text. 
+      </p>
+      <div class="note">
+        <strong>8kb</strong> total battery backed ram<br>
+        Each page has 256 bytes<br>
+        <strong>byte 0–251</strong> = text<br>
+        <strong>bits from 252–255 (32 bits):</strong><br>
+        <strong>0–17 (18 bits)</strong> = color (2 bits per line, uses the same color system as the PPU)<br>
+        <strong>18–26 (9 bits)</strong> = formatting bit per line (0 = normal, 1 = left formatting)<br>
+        <strong>27–31 (5 bits)</strong> = document index<br>
+        <br>
+        <em>Side note for the color bits:</em> the order in the bytes is a bit weird<br>
+        <strong>xxxx xxxx xxxx xxxx nnnn nnxx</strong><br>
+        • If you look in memory, the x’s will be the color info<br>
+        • First 2 bits are for line 3, second 2 for 2, then 1, and then 0<br>
+        • Then in the second byte we have the first (leftmost) 2 for 7, then 6, then 5, then 4<br>
+        • Rightmost bits of the third byte are assigned to line 8<br>
+        <br>
+        <strong>Reserved byte in zero page</strong> to store what type of text we are writing (<code>zp_text_info</code>)<br>
+        <strong>bit 1–2</strong> = text type (00 = normal, 01 = bold, 10 = italic)<br>
+        <strong>bit 3</strong> = is capitalized<br>
+        <strong>bit 4</strong> = is on the special keyboard<br>
+        <strong>bit 5–8</strong> = used to store what line we are editing (should be reset when new page is loaded)<br>
+      </div>
+      <p class="description">
+        So as you can see we use every single bit we can to store information. <br>
+        though its kind of a lie, since we dont actually use the document index.<br>
+        The idea was to have different documents you could save seperately, <br>
+        but this ended up being out of scope for the semester we had this course.<br>
+      </p>
     </main>
   </div>
 </body>
