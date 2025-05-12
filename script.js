@@ -29,6 +29,7 @@ const languageColors = {
   "C++": "#f34b7d",
   "UnrealBP": "#a5e1eb",
   "6502Assembly": "#e28743",
+  "html":"#33874b"
   // add more as needed
 };
 

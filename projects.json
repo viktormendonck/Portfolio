@@ -57,6 +57,7 @@
     "type": "Solo Projects",
     "Date" : "June 2024",
     "language":"C++",
+    "order": "0",
     "page": "project-pages/vulkanmodeler.html",
     "typeDescription": "Whilst I've made a bunch of small projects for school there isnt much that I really qualify as good enough. For the rest you can find more projects on my github."
   },
@@ -67,7 +68,21 @@
     "link": "",
     "description": "A Recreation of the game Digger(1983), in a custom made game engine",
     "type": "Solo Projects",
+    "Date" : "June 2024",
     "language":"C++",
+    "order": "2",
     "page": "project-pages/cppdigger.html"
+  },
+  {
+    "title": "This site",
+    "image": "assets/images/website.png",
+    "github": "https://github.com/viktormendonck/Portfolio",
+    "link": "https://viktormendonck.github.io/Portfolio/",
+    "description": "The website you are on right now",
+    "type": "Solo Projects",
+    "Date" : "May 2025",
+    "language":"html",
+    "order": "1",
+    "page": "project-pages/website.html"
   }
 ]
