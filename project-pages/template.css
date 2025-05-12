@@ -94,7 +94,7 @@
   
   .gif {
     max-width: 100%;
-    height: 400px;
+    height: auto;
     border-radius: 8px;
     margin: 20px 0;
   }
