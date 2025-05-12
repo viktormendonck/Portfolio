@@ -20,7 +20,8 @@
     "order": "1",
     "type": "Group Projects",
     "language":"C++",
-    "page": "project-pages/pomoco.html"
+    "Date" : "June 2025",
+    "page": "project-pages/ggk.html"
   },
   {
     "title": "Poseidon's Moving Company",
@@ -46,8 +47,6 @@
     "language": "UnrealBP",
     "page": "project-pages/tbatb.html"
   },
-
-
   {
     "title": "Vulkan 3d modeler",
     "image": "",
