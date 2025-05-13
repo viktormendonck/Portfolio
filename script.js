@@ -30,7 +30,6 @@ const languageColors = {
   "Unreal Blueprints": "#a5e1eb",
   "6502 Assembly": "#e28743",
   "html":"#33874b"
-  // add more as needed
 };
 
 function renderGroupedProjects(groupedProjects) {
@@ -44,7 +43,6 @@ function renderGroupedProjects(groupedProjects) {
     heading.textContent = capitalize(type);
     section.appendChild(heading);
 
-    // ✅ Add category description if available on the first project
     const firstProject = groupedProjects[type][0];
     if (firstProject.typeDescription) {
       const description = document.createElement('p');
