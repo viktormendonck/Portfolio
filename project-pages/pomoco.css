@@ -73,10 +73,22 @@ a:hover {
 }
 
 .back-button {
-  display: inline-block;
-  margin-bottom: 15px;
-  font-size: 0.95rem;
-}
+    display: inline-block;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    background-color: #c94343;
+    color: white;
+    border: none;
+    border-radius: 999px; /* fully rounded pill shape */
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .back-button:hover {
+  background-color: #e76767; /* darker shade on hover */
+  text-decoration: none;
+  }
 
 h1 {
   margin-bottom: 10px;
