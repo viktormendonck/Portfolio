@@ -1,89 +1,97 @@
 [
   {
-    "title": "Nespad",
-    "image": "assets/images/Nespad.png",
-    "link": "",
-    "github": "https://github.com/Akadeax/nespad",
-    "description": "A notepad made for the NES in 6502 assembly.",
-    "order": "0",
-    "Date" : "December 2024",
-    "type": "Group Projects",
-    "language":"6502 Assembly",
-    "page": "project-pages/nespad.html",
-    "typeDescription": "Projects I made in groups, whether it is school or otherwise."
+    "name": "Group Projects",
+    "description": "Projects I made in groups, whether it is school or otherwise.",
+    "projects": [
+      {
+        "title": "Nespad",
+        "image": "assets/images/Nespad.png",
+        "link": "",
+        "github": "https://github.com/Akadeax/nespad",
+        "description": "A notepad made for the NES in 6502 assembly.",
+        "order": "0",
+        "Date": "December 2024",
+        "language": "6502 Assembly",
+        "page": "project-pages/nespad.html"
+      },
+      {
+        "title": "GobGobKnight",
+        "image": "assets/images/ggk.png",
+        "link": "https://lazage.itch.io/group14goblinknight",
+        "github": "",
+        "description": "An adventure game where you combine and detach your goblin selves.",
+        "order": "1",
+        "Date": "June 2025",
+        "language": "C++",
+        "page": "project-pages/ggk.html"
+      }
+    ]
   },
   {
-    "title": "GobGobKnight",
-    "image": "assets/images/ggk.png",
-    "link": "https://lazage.itch.io/group14goblinknight",
-    "github": "",
-    "description": "An adventure game where you combine and detach your goblin selves.",
-    "order": "1",
-    "type": "Group Projects",
-    "language":"C++",
-    "Date" : "June 2025",
-    "page": "project-pages/ggk.html"
+    "name": "Game Jam",
+    "description": "The game jams I've joined over the years.",
+    "projects": [
+      {
+        "title": "Poseidon's Moving Company",
+        "image": "assets/images//pomoco.png",
+        "github": "https://github.com/Akadeax/unwrap-jam-2024",
+        "link": "https://akadeax.itch.io/poseidons-moving-company",
+        "description": "My first game jam, A game about helping the aquatic population move houses.",
+        "order": "1",
+        "Date": "February 2024",
+        "language": "GDScript",
+        "page": "project-pages/pomoco.html"
+      },
+      {
+        "title": "The Boy And The Brush",
+        "image": "assets/images/tbatb.png",
+        "github": "https://github.com/Akadeax/unwrap-jam-2025",
+        "link": "https://inquisitiveoctopus.itch.io/the-boy-and-the-brush",
+        "description": "A short 2D platformer where you play as a boy repainting the background of the world.",
+        "order": "0",
+        "Date": "April 2025",
+        "language": "Unreal Blueprints",
+        "page": "project-pages/tbatb.html"
+      }
+    ]
   },
   {
-    "title": "Poseidon's Moving Company",
-    "image": "assets/images//pomoco.png",
-    "github": "https://github.com/Akadeax/unwrap-jam-2024",
-    "link": "https://akadeax.itch.io/poseidons-moving-company",
-    "description": "My first game jam, A game about helping the aquatic population move houses.",
-    "order": "1",
-    "Date" : "February 2024",
-    "type": "Game Jam",
-    "language": "GDScript",
-    "page": "project-pages/pomoco.html"
-  },
-  {
-    "title": "The Boy And The Brush",
-    "image": "assets/images/tbatb.png",
-    "github": "https://github.com/Akadeax/unwrap-jam-2025",
-    "link": "https://inquisitiveoctopus.itch.io/the-boy-and-the-brush",
-    "description": "A short 2D platformer where you play as a boy repainting the background of the world.",
-    "order": "0",
-    "Date" : "April 2025",
-    "type": "Game Jam",
-    "language": "Unreal Blueprints",
-    "page": "project-pages/tbatb.html",
-    "typeDescription": "The game jams I've joined over the years."
-  },
-  {
-    "title": "Vulkan 3d Modeler",
-    "image": "assets/images/vulkan.png",
-    "github": "https://github.com/viktormendonck/3D-Modeler-Vulkan",
-    "link": "",
-    "description": "A very simple modeling software in my own C++ Vulkan graphics engine",
-    "type": "Solo Projects",
-    "Date" : "June 2024",
-    "language":"C++",
-    "order": "0",
-    "page": "project-pages/vulkanmodeler.html",
-    "typeDescription": "While I’ve made a bunch of small school projects, there aren’t many I consider good enough to feature here. You can find the rest on my GitHub."
-  },
-  {
-    "title": "CppDigger",
-    "image": "assets/images/cppdigger.png",
-    "github": "https://github.com/viktormendonck/CppDiggerProg4",
-    "link": "",
-    "description": "A recreation of the game Digger(1983), built in a custom-made game engine.",
-    "type": "Solo Projects",
-    "Date" : "June 2024",
-    "language":"C++",
-    "order": "2",
-    "page": "project-pages/cppdigger.html"
-  },
-  {
-    "title": "This Site",
-    "image": "assets/images/website.png",
-    "github": "https://github.com/viktormendonck/Portfolio",
-    "link": "https://viktormendonck.github.io/Portfolio/",
-    "description": "The very website you're viewing right now.",
-    "type": "Solo Projects",
-    "Date" : "May 2025",
-    "language":"html",
-    "order": "1",
-    "page": "project-pages/website.html"
+    "name": "Solo Projects",
+    "description": "While I’ve made a bunch of small school projects, there aren’t many I consider good enough to feature here. You can find the rest on my GitHub.",
+    "projects": [
+      {
+        "title": "Vulkan 3d Modeler",
+        "image": "assets/images/vulkan.png",
+        "github": "https://github.com/viktormendonck/3D-Modeler-Vulkan",
+        "link": "",
+        "description": "A very simple modeling software in my own C++ Vulkan graphics engine",
+        "order": "0",
+        "Date": "June 2024",
+        "language": "C++",
+        "page": "project-pages/vulkanmodeler.html"
+      },
+      {
+        "title": "This Site",
+        "image": "assets/images/website.png",
+        "github": "https://github.com/viktormendonck/Portfolio",
+        "link": "https://viktormendonck.github.io/Portfolio/",
+        "description": "The very website you're viewing right now.",
+        "order": "1",
+        "Date": "May 2025",
+        "language": "html",
+        "page": "project-pages/website.html"
+      },
+      {
+        "title": "CppDigger",
+        "image": "assets/images/cppdigger.png",
+        "github": "https://github.com/viktormendonck/CppDiggerProg4",
+        "link": "",
+        "description": "A recreation of the game Digger(1983), built in a custom-made game engine.",
+        "order": "2",
+        "Date": "June 2024",
+        "language": "C++",
+        "page": "project-pages/cppdigger.html"
+      }
+    ]
   }
 ]

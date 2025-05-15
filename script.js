@@ -1,26 +1,9 @@
 fetch('projects.json')
   .then(res => res.json())
   .then(data => {
-    const grouped = groupByType(data);
-    renderGroupedProjects(grouped);
+    renderProjectTypes(data);
   })
   .catch(err => console.error("Error loading projects.json:", err));
-
-function groupByType(projects) {
-  const map = {};
-  projects.forEach(project => {
-    const type = project.type;
-    if (!map[type]) map[type] = [];
-    map[type].push(project);
-  });
-
-  // Sort each group by the "order" field (converted to Number)
-  Object.keys(map).forEach(type => {
-    map[type].sort((a, b) => Number(a.order) - Number(b.order));
-  });
-
-  return map;
-}
 
 const languageColors = {
   "C#": "#9146ff",
@@ -29,32 +12,33 @@ const languageColors = {
   "C++": "#f34b7d",
   "Unreal Blueprints": "#a5e1eb",
   "6502 Assembly": "#e28743",
-  "html":"#33874b"
+  "html": "#33874b"
 };
 
-function renderGroupedProjects(groupedProjects) {
+function renderProjectTypes(projectTypes) {
   const container = document.getElementById('projects-container');
   container.innerHTML = '';
 
-  Object.keys(groupedProjects).forEach(type => {
+  projectTypes.forEach(typeGroup => {
     const section = document.createElement('section');
 
     const heading = document.createElement('h2');
-    heading.textContent = capitalize(type);
+    heading.textContent = typeGroup.name;
     section.appendChild(heading);
 
-    const firstProject = groupedProjects[type][0];
-    if (firstProject.typeDescription) {
+    if (typeGroup.description) {
       const description = document.createElement('p');
       description.className = 'type-description';
-      description.textContent = firstProject.typeDescription;
+      description.textContent = typeGroup.description;
       section.appendChild(description);
     }
 
     const group = document.createElement('div');
     group.className = 'project-group';
 
-    groupedProjects[type].forEach(project => {
+    typeGroup.projects.sort((a, b) => Number(a.order) - Number(b.order));
+
+    typeGroup.projects.forEach(project => {
       const content = document.createElement('div');
       content.className = 'project';
 
@@ -102,9 +86,4 @@ function renderGroupedProjects(groupedProjects) {
     section.appendChild(group);
     container.appendChild(section);
   });
-}
-
-
-function capitalize(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
 }
