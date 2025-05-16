@@ -161,26 +161,38 @@ function setupSidebarFilters() {
 
   let currentFilter = { type: null, value: null };
 
+  // Determine used languages/tools from project data
+  const usedLanguages = new Set();
+  const usedTools = new Set();
+
+  allProjectTypes.forEach(group => {
+    group.projects.forEach(project => {
+      if (Array.isArray(project.language)) {
+        project.language.forEach(lang => usedLanguages.add(lang));
+      }
+      if (Array.isArray(project.tools)) {
+        project.tools.forEach(tool => usedTools.add(tool));
+      }
+    });
+  });
+
+  // Clear selection styling
   function clearAllSelected() {
     languageBadges.forEach(b => b.classList.remove('selected'));
     toolBadges.forEach(b => b.classList.remove('selected'));
   }
 
+  // Badge click handler
   function handleBadgeClick(badge, filterType) {
     const filterValue = badge.textContent.trim();
 
-    badge.style.cursor = 'pointer';
-
     badge.addEventListener('click', () => {
       if (currentFilter.type === filterType && currentFilter.value === filterValue) {
-        // toggle off filter
         badge.classList.remove('selected');
         currentFilter = { type: null, value: null };
         renderProjectTypes(allProjectTypes);
       } else {
-        // clear previous
         clearAllSelected();
-        // select this badge
         badge.classList.add('selected');
         currentFilter = { type: filterType, value: filterValue };
         renderProjectsByFilter(filterType, filterValue);
@@ -188,6 +200,28 @@ function setupSidebarFilters() {
     });
   }
 
-  languageBadges.forEach(b => handleBadgeClick(b, 'language'));
-  toolBadges.forEach(b => handleBadgeClick(b, 'tool'));
+  // Set up language badge interactivity
+  languageBadges.forEach(badge => {
+    const lang = badge.textContent.trim();
+    if (!usedLanguages.has(lang)) {
+      badge.style.pointerEvents = 'none';
+      badge.style.cursor = 'default';
+    } else {
+      badge.style.cursor = 'pointer';
+      handleBadgeClick(badge, 'language');
+    }
+  });
+
+  // Set up tool badge interactivity
+  toolBadges.forEach(badge => {
+    const tool = badge.textContent.trim();
+    if (!usedTools.has(tool)) {
+      badge.style.pointerEvents = 'none';
+      badge.style.cursor = 'default';
+    } else {
+      badge.style.cursor = 'pointer';
+      handleBadgeClick(badge, 'tool');
+    }
+  });
 }
+

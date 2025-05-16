@@ -41,7 +41,7 @@
         "description": "My first game jam, A game about helping the aquatic population move houses.",
         "order": "1",
         "Date": "February 2024",
-        "language": ["GDScript","Python"],
+        "language": ["GDScript"],
         "tools": ["Git","Godot"],
         "page": "project-pages/pomoco.html"
       },
