@@ -33,6 +33,27 @@ function renderProjectTypes(projectTypes) {
   const container = document.getElementById('projects-container');
   container.innerHTML = '';
 
+  // --- Render Favorites First ---
+  const flatProjects = projectTypes.flatMap(group => group.projects);
+  const favorites = flatProjects.filter(p => p.favorite);
+
+  if (favorites.length > 0) {
+    const favSection = document.createElement('section');
+    const favHeading = document.createElement('h2');
+    favHeading.textContent = "Featured Projects";
+    favSection.appendChild(favHeading);
+
+    const favGroup = document.createElement('div');
+    favGroup.className = 'project-group';
+
+    favorites.sort((a, b) => Number(a.order) - Number(b.order))
+             .forEach(project => favGroup.appendChild(createProjectCard(project)));
+
+    favSection.appendChild(favGroup);
+    container.appendChild(favSection);
+  }
+
+  // --- Then render grouped by category ---
   projectTypes.forEach(typeGroup => {
     const section = document.createElement('section');
 
@@ -50,16 +71,14 @@ function renderProjectTypes(projectTypes) {
     const group = document.createElement('div');
     group.className = 'project-group';
 
-    typeGroup.projects.sort((a, b) => Number(a.order) - Number(b.order));
-
-    typeGroup.projects.forEach(project => {
-      group.appendChild(createProjectCard(project));
-    });
+    typeGroup.projects.sort((a, b) => Number(a.order) - Number(b.order))
+                      .forEach(project => group.appendChild(createProjectCard(project)));
 
     section.appendChild(group);
     container.appendChild(section);
   });
 }
+
 
 // Render flat filtered projects by language OR tool
 function renderProjectsByFilter(filterType, filterValue) {

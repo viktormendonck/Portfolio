@@ -13,7 +13,8 @@
         "Date": "December 2024",
         "language": ["6502 Assembly"],
         "tools": ["Git"],
-        "page": "project-pages/nespad.html"
+        "page": "project-pages/nespad.html",
+        "favorite": true
       },
       {
         "title": "GobGobKnight",
@@ -73,7 +74,8 @@
         "Date": "June 2024",
         "language": ["C++"],
         "tools": ["Git"],
-        "page": "project-pages/vulkanmodeler.html"
+        "page": "project-pages/vulkanmodeler.html",
+        "favorite": true
       },
       {
         "title": "This Site",
