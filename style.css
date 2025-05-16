@@ -141,3 +141,7 @@ a:hover {
   font-weight: bold;
   white-space: nowrap;
 }
+.sidebar .language-badge.selected {
+  outline: 2px solid #fff;
+  transform: scale(1.1);
+}

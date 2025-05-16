@@ -11,7 +11,8 @@
         "description": "A notepad made for the NES in 6502 assembly.",
         "order": "0",
         "Date": "December 2024",
-        "language": "6502 Assembly",
+        "language": ["6502 Assembly"],
+        "tools": ["Git"],
         "page": "project-pages/nespad.html"
       },
       {
@@ -22,7 +23,8 @@
         "description": "An adventure game where you combine and detach your goblin selves.",
         "order": "1",
         "Date": "June 2025",
-        "language": "C++",
+        "language": ["C++"],
+        "tools": ["Perforce","Unreal Engine"],
         "page": "project-pages/ggk.html"
       }
     ]
@@ -33,13 +35,14 @@
     "projects": [
       {
         "title": "Poseidon's Moving Company",
-        "image": "assets/images//pomoco.png",
+        "image": "assets/images/pomoco.png",
         "github": "https://github.com/Akadeax/unwrap-jam-2024",
         "link": "https://akadeax.itch.io/poseidons-moving-company",
         "description": "My first game jam, A game about helping the aquatic population move houses.",
         "order": "1",
         "Date": "February 2024",
-        "language": "GDScript",
+        "language": ["GDScript","Python"],
+        "tools": ["Git","Godot"],
         "page": "project-pages/pomoco.html"
       },
       {
@@ -50,7 +53,8 @@
         "description": "A short 2D platformer where you play as a boy repainting the background of the world.",
         "order": "0",
         "Date": "April 2025",
-        "language": "Unreal Blueprints",
+        "language": ["Unreal Blueprints"],
+        "tools": ["Git","Unreal Engine"],
         "page": "project-pages/tbatb.html"
       }
     ]
@@ -67,7 +71,8 @@
         "description": "A very simple modeling software in my own C++ Vulkan graphics engine",
         "order": "0",
         "Date": "June 2024",
-        "language": "C++",
+        "language": ["C++"],
+        "tools": ["Git"],
         "page": "project-pages/vulkanmodeler.html"
       },
       {
@@ -78,7 +83,8 @@
         "description": "The very website you're viewing right now.",
         "order": "1",
         "Date": "May 2025",
-        "language": "html",
+        "language": ["html","CSS","JS"],
+        "tools": ["Git"],
         "page": "project-pages/website.html"
       },
       {
@@ -89,7 +95,8 @@
         "description": "A recreation of the game Digger(1983), built in a custom-made game engine.",
         "order": "2",
         "Date": "June 2024",
-        "language": "C++",
+        "language": ["C++"],
+        "tools": ["Git"],
         "page": "project-pages/cppdigger.html"
       }
     ]
