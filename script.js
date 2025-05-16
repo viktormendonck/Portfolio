@@ -83,7 +83,11 @@ function renderProjectsByFilter(filterType, filterValue) {
   }
 
   const heading = document.createElement('h2');
-  heading.textContent = `Projects filtered by ${filterType}: ${filterValue}`;
+  if (filterType == "tool"){
+    heading.textContent = `Projects Made With ${filterValue}`;
+  } else {
+    heading.textContent = `Projects Made In ${filterValue}`;
+  }
   container.appendChild(heading);
 
   const group = document.createElement('div');
