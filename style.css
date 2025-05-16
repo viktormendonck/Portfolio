@@ -135,6 +135,8 @@ a:hover {
 
 .language-badge {
   padding: 0.25rem 0.5rem;
+  margin-bottom: 0.25rem;
+  margin-top: 0.25rem;
   border-radius: 999px;
   color: #000;
   font-size: 0.8rem;
@@ -144,4 +146,15 @@ a:hover {
 .sidebar .language-badge.selected {
   outline: 2px solid #fff;
   transform: scale(1.1);
+}
+.sidebar-badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.33rem 0.33rem; /* row-gap and column-gap */
+  margin-bottom: 1rem;
+}
+
+.sidebar .language-badge,
+.sidebar .tool-badge {
+  margin: 0; /* reset any inline margin */
 }
