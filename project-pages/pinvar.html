@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="\assets\images\favicon.png?">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PinVar</title>
+  <link rel="stylesheet" href="template.css" />
+</head>
+<body>
+  <div class="page-layout">
+    <aside class="sidebar">
+        <h2>PinVar</h2>
+        <p><strong>Language:</strong> C++</p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/viktormendonck/PinVar" target="_blank">github</a></p>
+        <hr />
+        <p>
+            A UE5 editor plugin that lets me pin Blueprint Class Default Variables into named groups so I can balance and tweak in one place.
+        </p>
+        <hr />
+    </aside>
+
+    <main class="content">
+      <a href="../index.html" class="back-button">← Back to Portfolio</a>
+
+      <h1>PinVar — Pinned Variables Tool</h1>
+
+  <p class="description">
+    PinVar started as a quality-of-life tool while I was balancing a combat system.
+    Jumping between multiple Blueprints to change one number at a time got old fast,
+    so I built a panel that pulls the variables I care about into tidy, collapsible groups.
+  </p>
+
+  <img src="../assets/images/pinvar3.png" alt="MenuScreen" class="image">
+
+  <section>
+    <h3>How to Use</h3>
+
+    <h4>Open the Tool</h4>
+    <p>Navigate to <strong>Windows → Pinned Variables Tool</strong>.  
+    A new tab will appear where your grouped variables will be listed.</p>
+
+    <h4>Add a Variable</h4>
+    <p>Click the <strong>Add Variable</strong> button, then select the Blueprint containing the variable you want to add.</p>
+
+    <img src="../assets/images/pinvar4.png" alt="MenuScreen" class="image">
+
+    <p>Select the type of variable to add: <br>
+    - Local Blueprint variable  <br>
+    - Variable in the C++ parent class <br> 
+    - Variable in an attached component</p>
+
+    <p>Select the variable you want to add and either give it a group name and press <strong>Add</strong>,  
+    or select a preexisting group name and click <strong>Add to existing group</strong>.</p>
+
+    <img src="../assets/images/pinvar2.png" alt="MenuScreen" class="image">
+
+    <h4>Edit the Variables</h4>
+    <p>In the tool’s main view, open a group and edit the variables directly from the panel.</p>
+
+    </main>
+  </div>
+</body>
+</html>

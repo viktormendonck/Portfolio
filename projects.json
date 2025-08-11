@@ -31,6 +31,24 @@
     ]
   },
   {
+    "name": "ToolDev",
+    "description": "Tools I've made",
+    "projects": [
+      {
+        "title": "PinVar",
+        "image": "assets/images/pinvar3.png",
+        "github": "https://github.com/viktormendonck/PinVar",
+        "link": "",
+        "description": "A for unreal that allows for better management of exposed variables",
+        "order": "0",
+        "Date": "August 2025",
+        "language": ["C++"],
+        "tools": ["Git","Unreal Engine"],
+        "page": "project-pages/pinvar.html"
+      }
+    ]
+  },
+  {
     "name": "Game Jam",
     "description": "The game jams I've joined over the years.",
     "projects": [
