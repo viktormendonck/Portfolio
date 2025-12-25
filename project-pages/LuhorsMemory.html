@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luhor's Memory</title>
+  <link rel="stylesheet" href="template.css" />
+  <style>
+    /* Split box: left text, right stacked images */
+    .split-box {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin: 20px 0;
+    }
+    .split-left { flex: 1; }
+    .split-right { width: 320px; display: flex; flex-direction: column; gap: 10px; }
+    .split-right img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    @media (max-width: 800px) {
+      .split-box { flex-direction: column; }
+      .split-right { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="banner">
+    <img src="../assets/images/LuhorBanner.jpg" alt="Project Banner">
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+        <h2>Luhor's Memory</h2>
+        <p><strong>Members:</strong> 7</p>
+        <p><strong>Language:</strong> C++</p>
+        <p><strong>Project:</strong> <a href="https://lazage.itch.io/luhors-memory" target="_blank">itch</a></p>
+        <hr />
+        <p>
+            A game I made in the last year of my bachelors game development, I did this with 1 other dev, 4 artists and we where lucky to be assigned a composer as well.
+        </p>
+        <a href="https://patricknell.de" target="_blank">Patrick Nellessen </a>
+        <a href="https://www.artstation.com/margo751" target="_blank">Margo Desmet</a>
+        <a href="https://www.artstation.com/eleonora_ciccarelli" target="_blank">Eleonora ciccarelli</a>
+        <a href="https://www.artstation.com/inquisitiveoctopus" target="_blank">Laurens Respaillie </a>
+        <a href="https://www.artstation.com/jankel" target="_blank">Jan Keller </a>
+        <a href="https://ziggysunaert.com" target="_blank">Ziggy sunaerts </a>
+        <hr />
+    </aside>
+
+    <main class="content">
+      <a href="../index.html" class="back-button">← Back to Portfolio</a>
+
+      <h1>Luhor's Memory</h1>
+      <h2>Lore</h2>
+  <p class="description">
+    Old gods in a world where they are no longer needed. No longer remembered. A volatile tragedy. For these gods, human prayer manifests as ambrosia, a honey-like liquid, that, through the thousands of years of worship, they grew dependent on. Maybe even addicted. 
+    <br><br>
+    Now that humans have forgotten about them, they have been left to starve, until one day one of the gods had enough. He broke open the sky and demanded worship through fear. The mortal plane, not being able to contain his power starts corrupting around him, turning humans into mangled monsters and the surface violent and dangerous.
+    <br><br>
+    Luckily one man, our protagonist Hughie, was prepared. A librarian versed in prophecy and heir to a lineage of God hunters, he knows it falls to him to keep the world from shattering.<br>
+    As he sees the skies break apart, knowing the streets are no longer safe, He heads into the subway system to track down the god’s commanders, who took over the power grids of the city.<br>
+    And on the way, he gets help from a very unexpected figure...
+  </p>
+  <h2>Gameplay Video</h2>
+  <div class="video-container">
+    <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/tv6ExRImxz8?si=Td3u9QI19JRPzZ8J" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <div class="split-box">
+    <div class="split-left">
+      <h2>The group</h2>
+      <p class="description">
+        We started this project with 6 people in total. 2 programmers and 4 artists. In week 2 of the semester we got assigned a Composer to bring our game to life.
+        <br><br>
+        Before we even got started in the semester we had already made our first prototype with unrealBP. 
+        <br>This helped us convice the teachers to allow us to start on this project.
+        In this early prototype we already had the core gameplay loop in place. We wanted to make a game where you could swap weapon layouts dynamically for a tactical combat style.<br>
+        But as everyone knows, prototypes are usually good to see if the game is fun, but terrible to check for the size of scope. 
+        <br><br>
+        When the project got accepted our supervisors instantly told us to cut down on scope, and thank god we did, since even now we ended up overscoping.
+        <br><br>
+        Whilst the warnings about scope stayed a common theme throughout the semester, they still saw that we knew what we where doing.<br> Eventually during a meeting they compared us to Icarus, and that we should be carefull not to fly to close to the sun, but that if we fell like he did that we would be smiling like he was.<br>
+        From that conversation we decided to embrace that idea and called our small very temporary studio "Smile on the way down".<br>
+        This ended up being our motto, Whilst what we are trying might be a lot, we didn't want to end this project thinking there was more we could have done.
+        <br>
+        And I'm happy to say that we did just that.
+      </p>
+    </div>
+    <div class="split-right">
+      <img src="../assets/images/LuhorsMemory.png" alt="Game logo">
+      <img src="../assets/images/SotwdLogo.png" alt="Team Logo">
+    </div>
+  </div>
+  <div class="split-box">
+    <div class="split-left">
+      <h2>The Project</h2>
+      <p class="description">
+        The game is built using UE5.6 with C++. We did this mostly because of the comfort of both the artists and the programmers with it.<br>
+        Additionally we ended up making a couple custom tools to help us along the way (that's what happens when both your developers are tooldevs).
+        <br><br>
+        Probably one of the most technically impressive things we ended up doing was using Mocap for every single animation in the game, using UE5.6's new retargeting tools.<br>
+        This ended up being a great decision as one of our artists Laurens was really good at designing and acting out the movement of our enemies, giving them a unique feel.
+        <br><br>
+      </p>
+    </div>
+    <div class="split-right">
+      <p>Prototyping the corruption</p>
+      <img src="../assets/images/LuhorPrototyping.png" alt="The way corruption looks in 2d">
+      <img src="../assets/images/LuhorCorruption_EvolutionProgress.png" alt="The way corruption looks in 3d">
+    </div>
+  </div>
+  
+  <p class="description">
+    <h3>the combat system</h3><br>
+    The main programming challenge we faced was managing to balance the game without messing up the beautiful mocap animations.<br>
+    To solve that poblem we ended up designing a combat system that splits up every attack into 5 segments we can assign an amount of time:
+    <ul>
+      <li><strong>Windup:</strong> The beginning of the attack, where the character prepares to strike.</li>
+      <li><strong>Blink:</strong> A very short segment where we can spawn RFX effects to telegraph the attack.</li>
+      <li><strong>Contact:</strong> The segment where the hitbox is active and can deal damage.</li>
+      <li><strong>Followup:</strong> The time after the attack is done where the player can continue the attack chain smoothly.</li>
+      <li><strong>Recovery:</strong> The time after the attack where the character moves back to idle.</li>
+    </ul>
+    the montage of every attack then gets seperated into the same segments that then scale with the amount of time that that segment should be active. 
+    <br><br>
+    This ensured our attacks where always looked smooth no matter how we balanced them. 
+    <br>
+    After this the balancing of the game was still a challenge in and of itself. given the amount of values related to combat there where. <br> But using <a href="pinvar.html">PinVar</a> which was made specifically with this project in mind, it ended up being more okay than expected.  
+  </p>
+<div class="split-box">
+    <div class="split-left">
+      <h2>The Shader</h2>
+      <p class="description">
+        The shader our technical artist ended up making allowed for the entirety of the visual style of this project to be possible.
+        <br> 
+        Not only did the cell shader + inline and outline shader give a nice look by itself but it's also what caused us not to need to unwrap and texture any object given the shader did so much work.
+        <br>
+        This allowed our artists who focussed on making props to make a lot more things than expected. 
+      </p>
+    </div>
+    <div class="split-right">
+      <p>Prototyping the corruption</p>
+      <img src="../assets/images/LuhorPrototyping.png" alt="The way corruption looks in 2d">
+      <img src="../assets/images/LuhorCorruption_EvolutionProgress.png" alt="The way corruption looks in 3d">
+    </div>
+  </div>
+      
+    </main>
+  </div>
+</body>
+</html>
+
