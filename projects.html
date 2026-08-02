@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects by Viktor Mendonck across professional work, Unreal Engine tools, games and technical experiments.">
+  <title>Projects | Viktor Mendonck</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body data-page="projects">
+  <header class="site-header">
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a><a class="active" href="projects.html">Projects</a><a href="blog.html">Blog</a><a href="mailto:viktor.mendonck@gmail.com">Contact</a>
+    </nav>
+  </header>
+
+  <main class="shell projects-page">
+    <header class="page-intro">
+      <p class="eyebrow">Project archive</p>
+      <h1>Everything I’ve worked on.</h1>
+      <p>A collection of professional work, tools, games and technical experiments. Filter by the technologies used or browse by category.</p>
+    </header>
+
+    <section class="filter-panel" aria-label="Project filters">
+      <div class="filter-header"><strong>Filter projects</strong><button id="clear-filters" class="filter-clear" type="button">Clear filter</button></div>
+      <div><span class="filter-label">Languages</span><div id="language-filters" class="filter-list"></div></div>
+      <div><span class="filter-label">Tools</span><div id="tool-filters" class="filter-list"></div></div>
+    </section>
+
+    <div id="projects-container" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer shell"><span>© <span id="year"></span> Viktor Mendonck</span><span>Built with HTML, CSS and JavaScript.</span></footer>
+  <script src="projects-data.js"></script>
+  <script src="script.js"></script>
+  <script src="botanical-decor.js"></script>
+</body>
+</html>

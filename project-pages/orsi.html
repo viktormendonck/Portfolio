@@ -1,121 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="/favicon.png"/>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Orsi Surgery Sim</title>
-  <link rel="stylesheet" href="template.css" />
-</head>
-<body>
-  <!-- Recommended banner image: a clean in-headset screenshot showing both robotic arms and one of the training exercises. -->
-  <header class="banner">
-    <img src="../assets/images/OrsiBanner.png" alt="Orsi Surgery Sim banner">
-  </header>
-
-  <div class="page-layout">
-    <aside class="sidebar">
-      <h2>Orsi Surgery Sim</h2>
-      <p><strong>Role:</strong> Game Developer</p>
-      <p><strong>Period:</strong> Mar-Aug 2026</p>
-      <p><strong>Language:</strong> C++</p>
-      <p><strong>Tools:</strong> Unreal Engine, Meta XR, Perforce</p>
-      <p><strong>Employer:</strong> <a href="https://onebonsai.com" target="_blank">OneBonsai</a></p>
-      <p><strong>Client:</strong> <a href="https://www.orsi-online.com" target="_blank">Orsi Academy</a></p>
-      <hr />
-      <p>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Orsi Surgery Sim</title>
+<link href="template.css" rel="stylesheet"/>
+<meta content="Orsi Surgery Sim — project breakdown by Viktor Mendonck." name="description"/></head>
+<body class="project-page"><header class="site-header">
+    <nav aria-label="Primary navigation" class="site-nav">
+<a href="../index.html">Home</a>
+<a class="active" href="../projects.html">Projects</a>
+<a href="../blog.html">Blog</a>
+<a href="mailto:viktor.mendonck@gmail.com">Contact</a>
+</nav>
+</header>
+<!-- Recommended banner image: a clean in-headset screenshot showing both robotic arms and one of the training exercises. -->
+<header class="banner">
+<img alt="Orsi Surgery Sim banner" src="../assets/images/OrsiBanner.png"/>
+</header>
+<div class="page-layout">
+<aside class="sidebar">
+<h2>Orsi Surgery Sim</h2>
+<p><strong>Role:</strong> Game Developer</p>
+<p><strong>Period:</strong> Mar-Aug 2026</p>
+<p><strong>Language:</strong> C++</p>
+<p><strong>Tools:</strong> Unreal Engine, Meta XR, Perforce</p>
+<p><strong>Employer:</strong> <a href="https://onebonsai.com" target="_blank">OneBonsai</a></p>
+<p><strong>Client:</strong> <a href="https://www.orsi-online.com" target="_blank">Orsi Academy</a></p>
+<hr/>
+<p>
         A VR simulator for training surgeons to operate a robotic surgical system through realistic exercises and purpose-built controls.
       </p>
-      <hr />
-    </aside>
-
-    <main class="content">
-      <a href="../index.html" class="back-button">← Back to Portfolio</a>
-
-      <h1>Orsi Surgery Sim</h1>
-
-      <p class="description">
+<hr/>
+</aside>
+<main class="content">
+<a class="back-button" href="../projects.html">← All projects</a>
+<h1>Orsi Surgery Sim</h1>
+<p class="description">
         I spent most of my time at OneBonsai working on a VR training simulator for Orsi Academy.
         The simulator recreates the controls and behaviour of a robotic surgical system, allowing surgeons to practise its movement and complete exercises in a controlled virtual environment.
-        <br><br>
+        <br/><br/>
         My work covered gameplay programming, interaction design, controller communication, bug fixing and processing feedback from surgeons who tested the simulator.
         Because this is training software rather than a conventional game, technical accuracy and predictable behaviour were more important than simply making interactions feel convenient.
       </p>
-
-      <!-- Recommended image: overview screenshot of the simulator with the robot arms visible. -->
-      <img src="../assets/images/OrsiOverview.png" alt="Orsi simulator overview" class="image">
-
-      <h2>Suturing Exercise</h2>
-      <p class="description">
+<!-- Recommended image: overview screenshot of the simulator with the robot arms visible. -->
+<img alt="Orsi simulator overview" class="image" src="../assets/images/OrsiOverview.png"/>
+<h2>Suturing Exercise</h2>
+<p class="description">
         My largest contribution was the development of a suturing exercise.
         I created the needle interaction, entry and exit targets, skin deformation, puncture detection, scoring and the constraints that guide a curved needle through the virtual skin.
-        <br><br>
+        <br/><br/>
         The skin deformation was implemented with a custom material and HLSL.
         A cubic Bezier curve represents the section of the needle passing through the skin, allowing the material to deform smoothly along the complete path instead of around a small set of disconnected points.
-        <br><br>
+        <br/><br/>
         Since VR cannot physically stop the user's hand, I also built a state-based constraint system that changes as the needle enters, passes through and exits the skin.
         This preserves the expected motion of a curved surgical needle while preventing movements that would be impossible on the real system.
       </p>
-
-      <!-- Recommended video: short side-by-side clip showing the needle entering the skin, deformation, puncture detection and the final score update. -->
-      <div class="video-container">
-        <iframe 
-          src="https://www.youtube.com/embed/SPFQysfJJ94" 
-          title="Suturing"
-          frameborder="0" 
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <!-- Recommended image: close-up of the skin material deformation around the curved needle. https://youtu.be/Q1Q3Gw56-GE -->
-      <img src="../assets/images/Dents.png" alt="Orsi simulator overview" class="image">
-
-      <h2>Robot Interaction and Camera Movement</h2>
-      <p class="description">
+<!-- Recommended video: short side-by-side clip showing the needle entering the skin, deformation, puncture detection and the final score update. -->
+<div class="video-container">
+<iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/SPFQysfJJ94" title="Suturing">
+</iframe>
+</div>
+<!-- Recommended image: close-up of the skin material deformation around the curved needle. https://youtu.be/Q1Q3Gw56-GE -->
+<img alt="Orsi simulator overview" class="image" src="../assets/images/Dents.png"/>
+<h2>Robot Interaction and Camera Movement</h2>
+<p class="description">
         I improved several of the simulator's core interactions.
         The grab system was made more forgiving when only one side of a pincer reached an object, while still preserving the precision expected from the surgical robot.
         I also added tunable translation scaling for the robot hands and fixed issues such as the arms disappearing after re-entering a simulation.
-        <br><br>
+        <br/><br/>
         I developed a camera-clutch movement system based on the actual pivot used by the surgical camera.
         This required researching the real robot rather than designing the movement around what felt best in VR.
         During testing at Orsi Academy, surgeons described the camera movement as the most realistic part of the simulator.
       </p>
-
-      <div class="video-container">
-        <iframe 
-          src="https://www.youtube.com/embed/Q1Q3Gw56-GE" 
-          title="OrsiMovement"
-          frameborder="0" 
-          allowfullscreen>
-        </iframe>
-      </div>
-
-
-      <h2>Exercises, Scoring and Reusable Systems</h2>
-      <p class="description">
+<div class="video-container">
+<iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/Q1Q3Gw56-GE" title="OrsiMovement">
+</iframe>
+</div>
+<h2>Exercises, Scoring and Reusable Systems</h2>
+<p class="description">
         Alongside the suturing exercise, I implemented gameplay for a ring-placement exercise and improved the simulator's reusable scoring systems.
         Scoreboard settings were moved into per-level data so each exercise could choose its timer, score labels and mistake tracking without requiring a separate hardcoded scoreboard.
-        <br><br>
+        <br/><br/>
         I also rewrote the puncture detection to filter out false positives caused by small VR tracking movements.
         This made the scoring more reliable and ensured users were penalised for actual mistakes rather than technical noise.
       </p>
-
-      <!-- Recommended image: screenshot of the ring-placement exercise or the reusable scoreboard. -->
-      <img src="../assets/images/OrsiRings.png" alt="Orsi simulator overview" class="image">
-      <h2>Hardware and User Testing</h2>
-      <p class="description">
+<!-- Recommended image: screenshot of the ring-placement exercise or the reusable scoreboard. -->
+<img alt="Orsi simulator overview" class="image" src="../assets/images/OrsiRings.png"/>
+<h2>Hardware and User Testing</h2>
+<p class="description">
         The simulator uses custom hardware to measure how strongly the user pinches the controls.
-        I investigated controller disconnects, replaced an unreliable third-party serial plugin with a smaller custom implementation and added Windows device discovery so the correct controller could be identified by name.<br>
+        I investigated controller disconnects, replaced an unreliable third-party serial plugin with a smaller custom implementation and added Windows device discovery so the correct controller could be identified by name.<br/>
         This turned out not to matter as the entire project had to be ported to run on the VR headset itself, which in turn forced the controller to be wireless and to work via bluetooth. 
         To have this work I modified the code on the ESP32 of the controller to constantly broadcast notifications that relay the current state of the controller that are encoded in binary data.
-        <br><br>
+        <br/><br/>
         I also joined testing sessions at Orsi Academy, where surgeons and the director of education tested the simulator.
         Their feedback directly shaped movement tuning, interaction changes, bug fixes and the final polish of the exercises.
       </p>
-
-      <!-- Recommended image: photo of the custom controller hardware, provided company/client permission allows it. -->
-      <img src="../assets/images/OrsiController.png" alt="Orsi simulator overview" class="image">
-    </main>
-  </div>
+<!-- Recommended image: photo of the custom controller hardware, provided company/client permission allows it. -->
+<img alt="Orsi simulator overview" class="image" src="../assets/images/OrsiController.png"/>
+</main>
+</div>
+<footer class="site-footer project-footer"><span>© 2026 Viktor Mendonck</span><a href="../projects.html">Explore more projects →</a></footer>  <script src="../botanical-decor.js"></script>
 </body>
 </html>

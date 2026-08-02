@@ -1,67 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="/favicon.png"/>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Viktor Mendonck, an Unreal Engine and gameplay programmer focused on tools, VR and technical systems.">
+  <title>Viktor Mendonck | Game Developer</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
-  <div class="layout">
-    <aside class="sidebar">
-      <img src="assets/images/test.png" alt="Me" class="profile-pic">
-      <h2>Viktor Mendonck</h2>
-      
-      <h3>Language Proficiencies</h3>
+<body data-page="home">
+  <header class="site-header">
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="active" href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="mailto:viktor.mendonck@gmail.com">Contact</a>
+    </nav>
+  </header>
 
-      <div class="sidebar-badge-group">
-        <span class="language-badge sidebar-language" style="background-color:#f34b7d;">C++</span>
-        <span class="language-badge sidebar-language" style="background-color:#9146ff;">C#</span>
-        <span class="language-badge sidebar-language" style="background-color:#3572A5;">Python</span>
-        <span class="language-badge sidebar-language" style="background-color:#e28743;">6502 Assembly</span>
+  <main>
+    <section class="hero shell">
+      <div class="hero-copy">
+        <p class="eyebrow">Game developer · Tools programmer · VR developer</p>
+        <h1>I build technical systems that make <strong>games</strong> and development workflows feel better.</h1>
+        <p class="hero-intro">I’m Viktor Mendonck, a Belgian game developer focused on Unreal Engine, custom tools, gameplay systems and VR. I enjoy solving unusual technical problems and turning complex workflows into reliable, usable systems.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="projects.html">Explore my work</a>
+          <a class="button secondary" href="https://github.com/viktormendonck" target="_blank" rel="noopener">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
       </div>
+      <aside class="hero-card">
+        <img src="assets/images/test.png" alt="Portrait of Viktor Mendonck">
+        <div>
+          <strong>Currently focused on</strong>
+          <p>Unreal Engine development, editor tooling, gameplay programming and standalone VR.</p>
+        </div>
+      </aside>
+    </section>
 
-      <hr />
-
-      <h3>Tool Proficiencies</h3>
-      <div class="sidebar-badge-group">
-        <span class="language-badge sidebar-tool" style="background-color:#5f739e;">Unreal Engine</span>
-        <span class="language-badge sidebar-tool" style="background-color:#176b37;">Unity</span>
-        <span class="language-badge sidebar-tool" style="background-color:#f1502f;">Git</span>
-        <span class="language-badge sidebar-tool" style="background-color:#478cbf;">Godot</span>
-        <span class="language-badge sidebar-tool" style="background-color:#064F8C;">CMake</span>
-        <span class="language-badge sidebar-tool" style="background-color:#f5792a;">Blender</span>
-        <span class="language-badge sidebar-tool" style="background-color: #0082FB;">Meta XR</span>
+    <section class="about shell section-grid">
+      <div>
+        <p class="eyebrow">About me</p>
+        <h2>Developer thinking, player-focused results.</h2>
       </div>
-      <hr />
-      
-      <p>
-        I'm a game developer/designer who graduated Game Development at Howest's Digital arts and entertainment in 2026
-      
-      <hr />
+      <div class="prose">
+        <p>I like projects where programming directly improves how people work or interact: a tool that removes repetitive editor work, a VR interaction that must feel predictable, or a gameplay system that remains easy to tune.</p>
+        <p>My strongest experience is in C++ and Unreal Engine, supported by work in hardware communication, rendering, custom editor tools and collaborative game production.</p>
+      </div>
+    </section>
 
-      <h3>Extra Info</h3>
-      <p><strong>Age:</strong> 21</p>
-      <p><strong>Location:</strong> Belgium (CET)</p>
-      <p><strong>Languages:</strong> English(fluent), Dutch(native), french: beginner, spanish: beginner</p>
-      <hr/>
-      <h3>Links:</h3>
-      <p><i class="fas fa-envelope"></i> <a href="mailto:viktor.mendonck@gmail.com">viktor.mendonck@gmail.com</a></p>
-      <p><i class="fab fa-github"></i> <a href="https://github.com/viktormendonck" target="_blank">github.com/viktormendonck</a></p>
-      <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/viktor-mendonck-340577310/">linkedin.com/in/viktor-mendonck</a></p>
-      <p><i class="fab fa-itch-io"></i> <a href="https://lazage.itch.io" target="_blank">lazage.itch.io</a></p>
-      <p><strong></strong></p>
+    <section class="focus shell">
+      <article><i class="fa-solid fa-screwdriver-wrench"></i><h3>Tools & workflows</h3><p>Editor extensions and reusable systems that reduce iteration friction.</p></article>
+      <article><i class="fa-solid fa-vr-cardboard"></i><h3>VR & interaction</h3><p>Reliable interactions, input systems and standalone-headset development.</p></article>
+      <article><i class="fa-solid fa-gamepad"></i><h3>Gameplay systems</h3><p>Technical gameplay features designed to remain readable and tunable.</p></article>
+      <article><i class="fa-solid fa-microchip"></i><h3>Technical problem-solving</h3><p>Rendering, hardware integration and unconventional low-level challenges.</p></article>
+    </section>
 
-    </aside>
+    <section class="featured shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">Selected work</p><h2>Featured projects</h2></div>
+        <a class="text-link" href="projects.html">View every project <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div id="featured-projects" class="featured-grid" aria-live="polite"></div>
+    </section>
 
-    <main class="content">
-      <h1>My Projects</h1>
-      <div id="projects-container"></div>
-    </main>
-  </div>
+    <section class="contact shell">
+      <div><p class="eyebrow">Let’s talk</p><h2>Interested in my work?</h2><p>I’m always happy to discuss Unreal Engine, technical game development, tools and VR.</p></div>
+      <div class="contact-links">
+        <a href="mailto:viktor.mendonck@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+        <a href="https://www.linkedin.com/in/viktor-mendonck-340577310/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/viktormendonck" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </section>
+  </main>
 
+  <footer class="site-footer shell"><span>© <span id="year"></span> Viktor Mendonck</span><span>Built with HTML, CSS and JavaScript.</span></footer>
+  <script src="projects-data.js"></script>
   <script src="script.js"></script>
+  <script src="botanical-decor.js"></script>
 </body>
 </html>

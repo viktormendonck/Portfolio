@@ -1,361 +1,175 @@
 let allProjectTypes = [];
+let activeFilter = null;
 
 const languageColors = {
-  "C#": "#9146ff",
-  "Python": "#3572A5",
-  "GDScript": "#3572A5",
-  "C++": "#f34b7d",
-  "Unreal Blueprints": "#a5e1eb",
-  "6502 Assembly": "#e28743",
-  "html": "#33874b"
+  "C#": "#9146ff", "Python": "#3572A5", "GDScript": "#3572A5",
+  "C++": "#f34b7d", "Unreal Blueprints": "#a5e1eb",
+  "6502 Assembly": "#e28743", "html": "#33874b", "CSS": "#1572b6", "JS": "#f0db4f"
 };
 
 const toolColors = {
-  "Unreal Engine": "#5f739e",
-  "Unity": "#176b37",
-  "Git": "#f1502f",
-  "Blender": "#f5792a",
-  "Godot": "#478cbf",
-  "CMake": "#064F8C",
-  "Meta XR": "#0082FB"
+  "Unreal Engine": "#5f739e", "Unity": "#176b37", "Git": "#f1502f",
+  "Blender": "#f5792a", "Godot": "#478cbf", "CMake": "#064F8C",
+  "Meta XR": "#0082FB", "Perforce": "#4b66a8"
 };
 
-fetch('projects.json')
-  .then(res => res.json())
-  .then(data => {
-    allProjectTypes = data;
-    renderProjectTypes(data);
-    setupSidebarFilters();
-  })
-  .catch(err => console.error("Error loading projects.json:", err));
+const page = document.body.dataset.page;
+setupNavigation();
+document.getElementById('year')?.replaceChildren(String(new Date().getFullYear()));
 
-// Render grouped projects by type (default view)
-function renderProjectTypes(projectTypes) {
+if (page === 'home' || page === 'projects') {
+  loadProjects();
+}
+
+async function loadProjects() {
+  try {
+    // projects-data.js mirrors projects.json so the portfolio also works when
+    // index.html is opened directly from disk. projects.json remains the source
+    // used by the site when hosted through a web server.
+    if (Array.isArray(window.PORTFOLIO_PROJECTS)) {
+      initialiseProjects(window.PORTFOLIO_PROJECTS);
+      return;
+    }
+
+    const response = await fetch('projects.json');
+    if (!response.ok) throw new Error(`Could not load projects.json (${response.status})`);
+    initialiseProjects(await response.json());
+  } catch (error) {
+    console.error(error);
+    const target = document.getElementById('featured-projects') || document.getElementById('projects-container');
+    if (target) target.innerHTML = '<p class="load-error">Projects could not be loaded.</p>';
+  }
+}
+
+function initialiseProjects(data) {
+  allProjectTypes = data;
+  if (page === 'home') renderFeaturedProjects();
+  if (page === 'projects') {
+    buildFilters();
+    renderProjectTypes(allProjectTypes);
+  }
+}
+
+function setupNavigation() {
+  const button = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  if (!button || !nav) return;
+  button.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    button.setAttribute('aria-expanded', String(open));
+  });
+}
+
+function flattenProjects() {
+  return allProjectTypes.flatMap(group => group.projects.map(project => ({ ...project, category: group.name })));
+}
+
+function renderFeaturedProjects() {
+  const container = document.getElementById('featured-projects');
+  const favorites = flattenProjects()
+    .filter(project => project.favorite)
+    .sort((a, b) => Number(a.order) - Number(b.order))
+    .slice(0, 4);
+
+  container.replaceChildren(...favorites.map((project, index) => createProjectCard(project, index === 0 ? 'featured-large' : '')));
+}
+
+function renderProjectTypes(groups) {
   const container = document.getElementById('projects-container');
   container.innerHTML = '';
 
-  // --- Render Favorites First ---
-  const flatProjects = projectTypes.flatMap(group => group.projects);
-  const favorites = flatProjects.filter(p => p.favorite);
+  groups.forEach(groupData => {
+    const visibleProjects = groupData.projects
+      .filter(matchesActiveFilter)
+      .sort((a, b) => Number(a.order) - Number(b.order));
+    if (!visibleProjects.length) return;
 
-  if (favorites.length > 0) {
-    const favSection = document.createElement('section');
-    const favHeading = document.createElement('h2');
-    favHeading.textContent = "Featured Projects";
-    favSection.appendChild(favHeading);
-
-    const favGroup = document.createElement('div');
-    favGroup.className = 'project-group';
-
-    favorites
-      .sort((a, b) => Number(a.order) - Number(b.order))
-      .forEach(project => {
-        favGroup.appendChild(createProjectCard(project));
-      });
-
-    favSection.appendChild(favGroup);
-    container.appendChild(favSection);
-  }
-
-  // --- Then render grouped by category ---
-  projectTypes.forEach(typeGroup => {
     const section = document.createElement('section');
+    section.className = 'project-section';
+    section.innerHTML = `<div class="section-heading"><div><h2>${escapeHtml(groupData.name)}</h2>${groupData.description ? `<p>${escapeHtml(groupData.description)}</p>` : ''}</div><span class="project-count">${visibleProjects.length}</span></div>`;
 
-    const heading = document.createElement('h2');
-    heading.textContent = typeGroup.name;
-    section.appendChild(heading);
-
-    if (typeGroup.description) {
-      const description = document.createElement('p');
-      description.className = 'type-description';
-      description.textContent = typeGroup.description;
-      section.appendChild(description);
-    }
-
-    const group = document.createElement('div');
-    group.className = 'project-group';
-
-    typeGroup.projects
-      .sort((a, b) => Number(a.order) - Number(b.order))
-      .forEach(project => {
-        group.appendChild(createProjectCard(project));
-      });
-
-    section.appendChild(group);
+    const grid = document.createElement('div');
+    grid.className = 'project-grid';
+    visibleProjects.forEach(project => grid.appendChild(createProjectCard({ ...project, category: groupData.name })));
+    section.appendChild(grid);
     container.appendChild(section);
   });
+
+  if (!container.children.length) container.innerHTML = '<div class="empty-results"><h2>No projects found</h2><p>Try a different filter.</p></div>';
 }
 
-// Render flat filtered projects by language OR tool
-function renderProjectsByFilter(filterType, filterValue) {
-  const container = document.getElementById('projects-container');
-  container.innerHTML = '';
-
-  const flatProjects = allProjectTypes.flatMap(group => group.projects);
-
-  let filtered = [];
-
-  if (filterType === 'language') {
-    filtered = flatProjects.filter(project =>
-      Array.isArray(project.language) &&
-      project.language.includes(filterValue)
-    );
-  } else if (filterType === 'tool') {
-    filtered = flatProjects.filter(project =>
-      Array.isArray(project.tools) &&
-      project.tools.includes(filterValue)
-    );
-  }
-
-  if (filtered.length === 0) {
-    clearAllSelectedBadges();
-    renderProjectTypes(allProjectTypes);
-    return;
-  }
-
-  const heading = document.createElement('h2');
-
-  if (filterType === "tool") {
-    heading.textContent = `Projects Made With ${filterValue}`;
-  } else {
-    heading.textContent = `Projects Made In ${filterValue}`;
-  }
-
-  container.appendChild(heading);
-
-  const group = document.createElement('div');
-  group.className = 'project-group filtered';
-
-  filtered
-    .sort((a, b) => Number(a.order) - Number(b.order))
-    .forEach(project => {
-      group.appendChild(createProjectCard(project));
-    });
-
-  container.appendChild(group);
+function matchesActiveFilter(project) {
+  if (!activeFilter) return true;
+  const values = activeFilter.type === 'language' ? project.language : project.tools;
+  return Array.isArray(values) && values.includes(activeFilter.value);
 }
 
-// Helper to clear all selected badges
-function clearAllSelectedBadges() {
-  const languageBadges = document.querySelectorAll(
-    '.sidebar .sidebar-language.selected'
-  );
+function createProjectCard(project, extraClass = '') {
+  const card = document.createElement(project.page ? 'a' : 'article');
+  card.className = `project-card ${extraClass}`.trim();
+  if (project.page) card.href = project.page;
 
-  const toolBadges = document.querySelectorAll(
-    '.sidebar .sidebar-tool.selected'
-  );
+  const language = Array.isArray(project.language) ? project.language[0] : null;
+  const image = project.image ? `<div class="project-image"><img src="${escapeAttribute(project.image)}" alt="${escapeAttribute(project.title)}" loading="lazy"></div>` : '';
 
-  languageBadges.forEach(badge => {
-    badge.classList.remove('selected');
+  card.innerHTML = `
+    ${image}
+    <div class="project-card-body">
+      <div class="project-kicker"><span>${escapeHtml(project.category || '')}</span><span>${escapeHtml(project.Date || '')}</span></div>
+      <h3>${escapeHtml(project.title)}</h3>
+      <p>${escapeHtml(project.description || '')}</p>
+      <div class="project-card-footer">
+        ${language ? `<span class="tech-pill" style="--pill-color:${languageColors[language] || '#777'}">${escapeHtml(language)}</span>` : '<span></span>'}
+        ${project.page ? '<span class="open-project">View project <i class="fa-solid fa-arrow-right"></i></span>' : ''}
+      </div>
+    </div>`;
+  return card;
+}
+
+function buildFilters() {
+  const languages = new Set();
+  const tools = new Set();
+  flattenProjects().forEach(project => {
+    project.language?.forEach(item => languages.add(item));
+    project.tools?.forEach(item => tools.add(item));
   });
 
-  toolBadges.forEach(badge => {
-    badge.classList.remove('selected');
+  populateFilterList('language-filters', [...languages].sort(), 'language', languageColors);
+  populateFilterList('tool-filters', [...tools].sort(), 'tool', toolColors);
+
+  document.getElementById('clear-filters').addEventListener('click', clearFilter);
+}
+
+function populateFilterList(containerId, values, type, colors) {
+  const container = document.getElementById(containerId);
+  values.forEach(value => {
+    const button = document.createElement('button');
+    button.className = 'filter-chip';
+    button.type = 'button';
+    button.textContent = value;
+    button.style.setProperty('--chip-color', colors[value] || '#777');
+    button.addEventListener('click', () => setFilter(type, value, button));
+    container.appendChild(button);
   });
 }
 
-// Create project card (only first language shown)
-function createProjectCard(project) {
-  const content = document.createElement('div');
-  content.className = 'project';
-
-  const projectLinks = Array.isArray(project.link)
-    ? project.link.filter(Boolean)
-    : [];
-
-  const renderedLinks = projectLinks
-    .map((link, index) => {
-      const url = typeof link === 'string'
-        ? link
-        : link.url;
-
-      const label = typeof link === 'string'
-        ? (
-            projectLinks.length === 1
-              ? 'Project'
-              : `Project ${index + 1}`
-          )
-        : (
-            link.label ||
-            (
-              projectLinks.length === 1
-                ? 'Project'
-                : `Project ${index + 1}`
-            )
-          );
-
-      if (!url) {
-        return '';
-      }
-
-      return `<a href="${url}" target="_blank">${label}</a>`;
-    })
-    .filter(Boolean);
-
-  if (project.github) {
-    renderedLinks.push(
-      `<a href="${project.github}" target="_blank">Code</a>`
-    );
-  }
-
-  const linksHTML = renderedLinks.join(' | ');
-
-  const imageHTML = project.image
-    ? `<img src="${project.image}" alt="${project.title}">`
-    : '';
-
-  const firstLang =
-    Array.isArray(project.language) &&
-    project.language.length > 0
-      ? project.language[0]
-      : null;
-
-  const languageBadge = firstLang
-    ? `
-      <span
-        class="language-badge"
-        style="background-color: ${languageColors[firstLang] || '#666'}"
-      >
-        ${firstLang}
-      </span>
-    `
-    : '';
-
-  content.innerHTML = `
-    ${imageHTML}
-    <h3>${project.title}</h3>
-
-    <div class="meta-line">
-      <p>
-        <strong>Date:</strong>
-        ${project.Date || "Unknown"}
-      </p>
-
-      ${languageBadge}
-    </div>
-
-    <p>${project.description}</p>
-
-    ${linksHTML ? `<p>${linksHTML}</p>` : ''}
-  `;
-
-  if (project.page) {
-    const linkWrapper = document.createElement('a');
-
-    linkWrapper.href = project.page;
-    linkWrapper.style.textDecoration = 'none';
-    linkWrapper.style.color = 'inherit';
-
-    linkWrapper.appendChild(content);
-
-    return linkWrapper;
-  }
-
-  return content;
+function setFilter(type, value, button) {
+  const same = activeFilter?.type === type && activeFilter?.value === value;
+  document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('selected'));
+  activeFilter = same ? null : { type, value };
+  if (!same) button.classList.add('selected');
+  document.getElementById('clear-filters').classList.toggle('visible', Boolean(activeFilter));
+  renderProjectTypes(allProjectTypes);
 }
 
-// Setup sidebar filter handlers for language and tool badges
-function setupSidebarFilters() {
-  const languageBadges = document.querySelectorAll(
-    '.sidebar .sidebar-language'
-  );
-
-  const toolBadges = document.querySelectorAll(
-    '.sidebar .sidebar-tool'
-  );
-
-  let currentFilter = {
-    type: null,
-    value: null
-  };
-
-  // Determine used languages/tools from project data
-  const usedLanguages = new Set();
-  const usedTools = new Set();
-
-  allProjectTypes.forEach(group => {
-    group.projects.forEach(project => {
-      if (Array.isArray(project.language)) {
-        project.language.forEach(language => {
-          usedLanguages.add(language);
-        });
-      }
-
-      if (Array.isArray(project.tools)) {
-        project.tools.forEach(tool => {
-          usedTools.add(tool);
-        });
-      }
-    });
-  });
-
-  // Clear selection styling
-  function clearAllSelected() {
-    languageBadges.forEach(badge => {
-      badge.classList.remove('selected');
-    });
-
-    toolBadges.forEach(badge => {
-      badge.classList.remove('selected');
-    });
-  }
-
-  // Badge click handler
-  function handleBadgeClick(badge, filterType) {
-    const filterValue = badge.textContent.trim();
-
-    badge.addEventListener('click', () => {
-      const sameFilterSelected =
-        currentFilter.type === filterType &&
-        currentFilter.value === filterValue;
-
-      if (sameFilterSelected) {
-        badge.classList.remove('selected');
-
-        currentFilter = {
-          type: null,
-          value: null
-        };
-
-        renderProjectTypes(allProjectTypes);
-      } else {
-        clearAllSelected();
-
-        badge.classList.add('selected');
-
-        currentFilter = {
-          type: filterType,
-          value: filterValue
-        };
-
-        renderProjectsByFilter(filterType, filterValue);
-      }
-    });
-  }
-
-  // Set up language badge interactivity
-  languageBadges.forEach(badge => {
-    const language = badge.textContent.trim();
-
-    if (!usedLanguages.has(language)) {
-      badge.style.pointerEvents = 'none';
-      badge.style.cursor = 'default';
-    } else {
-      badge.style.cursor = 'pointer';
-      handleBadgeClick(badge, 'language');
-    }
-  });
-
-  // Set up tool badge interactivity
-  toolBadges.forEach(badge => {
-    const tool = badge.textContent.trim();
-
-    if (!usedTools.has(tool)) {
-      badge.style.pointerEvents = 'none';
-      badge.style.cursor = 'default';
-    } else {
-      badge.style.cursor = 'pointer';
-      handleBadgeClick(badge, 'tool');
-    }
-  });
+function clearFilter() {
+  activeFilter = null;
+  document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('selected'));
+  document.getElementById('clear-filters').classList.remove('visible');
+  renderProjectTypes(allProjectTypes);
 }
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>'"]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]);
+}
+function escapeAttribute(value) { return escapeHtml(value); }

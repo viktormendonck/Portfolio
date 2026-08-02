@@ -1,92 +1,86 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="/favicon.png"/>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Instructor View</title>
-  <link rel="stylesheet" href="template.css" />
-</head>
-<body>
-  <div class="page-layout">
-    <aside class="sidebar">
-      <h2>Instructor View</h2>
-      <p><strong>Role:</strong> Rendering Developer</p>
-      <p><strong>Period:</strong> Jun 2026-present</p>
-      <p><strong>Language:</strong> C++</p>
-      <p><strong>Tools:</strong> Unreal Engine, Render Graph, Meta XR, Android</p>
-      <p><strong>Employer:</strong> <a href="https://onebonsai.com" target="_blank">OneBonsai</a></p>
-      <hr />
-      <p>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Instructor View</title>
+<link href="template.css" rel="stylesheet"/>
+<meta content="Instructor View — project breakdown by Viktor Mendonck." name="description"/></head>
+<body class="project-page"><header class="site-header">
+    <nav aria-label="Primary navigation" class="site-nav">
+<a href="../index.html">Home</a>
+<a class="active" href="../projects.html">Projects</a>
+<a href="../blog.html">Blog</a>
+<a href="mailto:viktor.mendonck@gmail.com">Contact</a>
+</nav>
+</header>
+<div class="page-layout">
+<aside class="sidebar">
+<h2>Instructor View</h2>
+<p><strong>Role:</strong> Rendering Developer</p>
+<p><strong>Period:</strong> Jun 2026-present</p>
+<p><strong>Language:</strong> C++</p>
+<p><strong>Tools:</strong> Unreal Engine, Render Graph, Meta XR, Android</p>
+<p><strong>Employer:</strong> <a href="https://onebonsai.com" target="_blank">OneBonsai</a></p>
+<hr/>
+<p>
         A low-overhead system that reuses an already-rendered VR eye for an external instructor display instead of rendering the scene again.
       </p>
-      <hr />
-    </aside>
-
-    <main class="content">
-      <a href="../index.html" class="back-button">← Back to Portfolio</a>
-
-      <h1>Instructor View</h1>
-
-      <p class="description">
+<hr/>
+</aside>
+<main class="content">
+<a class="back-button" href="../projects.html">← All projects</a>
+<h1>Instructor View</h1>
+<p class="description">
         VR training applications often need an external view so an instructor can observe the trainee.
         A common solution is to add another camera and render the scene a second time, but this creates a significant performance cost on standalone headsets.
-        <br><br>
+        <br/><br/>
         I developed a system that captures one of the eye images Unreal Engine has already rendered and copies it into a render target.
         This provides the instructor view without adding an unnecessary third render pass.
       </p>
-
-      <h2>Capturing the Existing VR Frame</h2>
-      <p class="description">
+<h2>Capturing the Existing VR Frame</h2>
+<p class="description">
         I started with very little experience in Unreal Engine's rendering pipeline.
         The first version used a scene-view extension and a post-processing hook to copy the rendered scene into a texture.
         This worked in the editor and on desktop, proving that an existing eye render could be reused.
-        <br><br>
+        <br/><br/>
         The implementation had to deal with render-thread access, GPU textures, stereo eye selection, texture formats and differences in resolution between the headset render and the instructor output.
         The final copy remains on the GPU, avoiding an expensive transfer through the CPU.
       </p>
-
-      <!-- Recommended image: Unreal RenderDoc capture or debug screenshot showing source eye texture and destination render target. -->
-
-      <h2>Making It Work on Android</h2>
-      <p class="description">
+<!-- Recommended image: Unreal RenderDoc capture or debug screenshot showing source eye texture and destination render target. -->
+<h2>Making It Work on Android</h2>
+<p class="description">
         The desktop implementation stopped working when deployed to the headset because Unreal's mobile renderer exposes the frame at different points in the rendering pipeline.
         The post-processing hook used on Windows was not called in the same way on Android.
-        <br><br>
+        <br/><br/>
         I tested several mobile rendering hooks and found a stable point where the completed VR view could be accessed on the render thread.
         This allowed the system to run directly on the headset while still reusing an existing eye image.
       </p>
-      <div class="video-container">
-        <iframe 
-          src="https://www.youtube.com/embed/febJr7y8K-w" 
-          title="RenderHijackAndroid"
-          frameborder="0" 
-          allowfullscreen>
-        </iframe>
-      </div>
-      <h2>Mixed-Reality Support</h2>
-      <p class="description">
+<div class="video-container">
+<iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/febJr7y8K-w" title="RenderHijackAndroid">
+</iframe>
+</div>
+<h2>Mixed-Reality Support</h2>
+<p class="description">
         Capturing the rendered eye works well for fully virtual applications, but mixed-reality projects require an additional step.
         The headset's camera feed is composited outside the virtual frame, so the captured texture initially contains the virtual objects over a black background.
-        <br><br>
+        <br/><br/>
         I researched headset camera access and began combining a separately retrieved camera image with the captured virtual frame.
         Because the camera and rendered eye use different fields of view and lens characteristics, the images require scaling, offsets and distortion correction before they align.
       </p>
-      <img src="../assets/images/InstructorMaterial.png" alt="the material graph" class="image">
-      <div class="video-container">
-        <iframe 
-          src="https://www.youtube.com/embed/_wMPNxws3Y0" 
-          title="RenderHijackAndroid"
-          frameborder="0" 
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <h2>Result</h2>
-      <p class="description">
+<img alt="the material graph" class="image" src="../assets/images/InstructorMaterial.png"/>
+<div class="video-container">
+<iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/_wMPNxws3Y0" title="RenderHijackAndroid">
+</iframe>
+</div>
+<h2>Result</h2>
+<p class="description">
         The system now provides a clean foundation for observing VR training sessions without paying the performance cost of another full scene render.
       </p>
-    </main>
-  </div>
+</main>
+</div>
+<footer class="site-footer project-footer"><span>© 2026 Viktor Mendonck</span><a href="../projects.html">Explore more projects →</a></footer>  <script src="../botanical-decor.js"></script>
 </body>
 </html>

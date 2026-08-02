@@ -1,0 +1,266 @@
+window.PORTFOLIO_PROJECTS = [
+  {
+    "name": "Professional Work",
+    "description": "Projects I have worked on whilst employed",
+    "projects": [
+      {
+        "title": "Orsi Surgery Sim",
+        "image": "assets/images/OrsiPageCover.png",
+        "github": "",
+        "favorite": true,
+        "link": [
+          {
+            "label": "Employer",
+            "url": "https://onebonsai.com"
+          },
+          {
+            "label": "Client",
+            "url": "https://www.orsi-online.com"
+          }
+        ],
+        "description": "A VR training simulator that helps surgeons practise operating robotic surgical systems.",
+        "order": "0",
+        "Date": "Mar-Aug 2026",
+        "language": [
+          "C++"
+        ],
+        "tools": [
+          "Perforce",
+          "Unreal Engine",
+          "Meta XR"
+        ],
+        "page": "project-pages/orsi.html"
+      },
+      {
+        "title": "Hand Posing Tool",
+        "image": "assets/images/handposingCover.png",
+        "github": "",
+        "link": [
+          {
+            "label": "Employer",
+            "url": "https://onebonsai.com"
+          },
+          {
+            "label": "BlogPost",
+            "url": "https://onebonsai.com/blog/an-interns-attempt-at-building-a-hand-posing-system"
+          }
+        ],
+        "description": "An Unreal Engine editor tool that makes creating and adjusting custom hand poses for interactable VR objects faster and easier.",
+        "order": "100",
+        "Date": "Feb-Jun 2026",
+        "language": [
+          "C++"
+        ],
+        "tools": [
+          "Perforce",
+          "Unreal Engine"
+        ],
+        "page": "project-pages/HandPosing.html"
+      },
+      {
+        "title": "Instructor View",
+        "image": "assets/images/InstructorView.png",
+        "github": "",
+        "favorite": true,
+        "link": [
+          {
+            "label": "Employer",
+            "url": "https://onebonsai.com"
+          }
+        ],
+        "description": "A rendering system that mirrors the trainee’s VR view to an external display, allowing instructors to follow training sessions in real time.",
+        "order": "5",
+        "Date": "Jun-Jul 2026",
+        "language": [
+          "C++"
+        ],
+        "tools": [
+          "Perforce",
+          "Unreal Engine"
+        ],
+        "page": "project-pages/InstructorView.html"
+      }
+    ]
+  },
+  {
+    "name": "ToolDev",
+    "description": "Tools I've made",
+    "projects": [
+      {
+        "title": "PinVar",
+        "image": "assets/images/pinvar3.png",
+        "github": "https://github.com/viktormendonck/PinVar",
+        "link": [],
+        "description": "A tool for unreal that allows for better management of exposed variables",
+        "order": "0",
+        "Date": "August 2025",
+        "language": [
+          "C++"
+        ],
+        "tools": [
+          "Git",
+          "Unreal Engine"
+        ],
+        "page": "project-pages/pinvar.html"
+      }
+    ]
+  },
+  {
+    "name": "Non Professional Projects",
+    "description": "While I’ve made a bunch of small school projects, there aren’t many I consider good enough to feature here. You can find the rest on my GitHub.",
+    "projects": [
+      {
+        "title": "Vulkan 3d Modeler",
+        "image": "assets/images/vulkan.png",
+        "github": "https://github.com/viktormendonck/3D-Modeler-Vulkan",
+        "link": [],
+        "description": "A very simple modeling software in my own C++ Vulkan graphics engine",
+        "order": "10",
+        "Date": "June 2024",
+        "language": [
+          "C++"
+        ],
+        "tools": [
+          "Git"
+        ],
+        "page": "project-pages/vulkanmodeler.html"
+      },
+      {
+        "title": "This Site",
+        "image": "assets/images/website.png",
+        "github": "https://github.com/viktormendonck/Portfolio",
+        "link": [
+          "https://viktormendonck.github.io/Portfolio/"
+        ],
+        "description": "The very website you're viewing right now.",
+        "order": "100",
+        "Date": "May 2025",
+        "language": [
+          "html",
+          "CSS",
+          "JS"
+        ],
+        "tools": [
+          "Git"
+        ],
+        "page": "project-pages/website.html"
+      },
+      {
+        "title": "CppDigger",
+        "image": "assets/images/cppdigger.png",
+        "github": "https://github.com/viktormendonck/CppDiggerProg4",
+        "link": [],
+        "description": "A recreation of the game Digger(1983), built in a custom-made game engine.",
+        "order": "20000",
+        "Date": "June 2024",
+        "language": [
+          "C++"
+        ],
+        "tools": [
+          "Git"
+        ],
+        "page": "project-pages/cppdigger.html"
+      },
+      {
+        "title": "Luhor's Memory",
+        "image": "assets/images/LuhorsMemoryFront.png",
+        "link": [
+          "https://store.steampowered.com/app/4332350/Luhors_Memory/"
+        ],
+        "github": "",
+        "description": "A fast paced roguelike Hack'n'slash",
+        "order": "0",
+        "Date": "Sept-Dec 2025",
+        "language": [
+          "C++"
+        ],
+        "tools": [
+          "Perforce",
+          "Unreal Engine"
+        ],
+        "page": "project-pages/LuhorsMemory.html",
+        "favorite": true
+      },
+      {
+        "title": "Nespad",
+        "image": "assets/images/Nespad.png",
+        "link": [],
+        "github": "https://github.com/Akadeax/nespad",
+        "description": "A notepad made for the NES in 6502 assembly.",
+        "order": "1",
+        "Date": "December 2024",
+        "language": [
+          "6502 Assembly"
+        ],
+        "tools": [
+          "Git"
+        ],
+        "page": "project-pages/nespad.html",
+        "favorite": true
+      },
+      {
+        "title": "GobGobKnight",
+        "image": "assets/images/ggk.png",
+        "link": [
+          "https://lazage.itch.io/group14goblinknight"
+        ],
+        "github": "",
+        "description": "An adventure game where you combine and detach your goblin selves.",
+        "order": "200",
+        "Date": "June 2025",
+        "language": [
+          "C++"
+        ],
+        "tools": [
+          "Perforce",
+          "Unreal Engine"
+        ],
+        "page": "project-pages/ggk.html"
+      }
+    ]
+  },
+  {
+    "name": "Game Jam",
+    "description": "The game jams I've joined over the years.",
+    "projects": [
+      {
+        "title": "Poseidon's Moving Company",
+        "image": "assets/images/pomoco.png",
+        "github": "https://github.com/Akadeax/unwrap-jam-2024",
+        "link": [
+          "https://akadeax.itch.io/poseidons-moving-company"
+        ],
+        "description": "My first game jam, A game about helping the aquatic population move houses.",
+        "order": "1",
+        "Date": "February 2024",
+        "language": [
+          "GDScript"
+        ],
+        "tools": [
+          "Git",
+          "Godot"
+        ],
+        "page": "project-pages/pomoco.html"
+      },
+      {
+        "title": "The Boy And The Brush",
+        "image": "assets/images/tbatb.png",
+        "github": "https://github.com/Akadeax/unwrap-jam-2025",
+        "link": [
+          "https://inquisitiveoctopus.itch.io/the-boy-and-the-brush"
+        ],
+        "description": "A short 2D platformer where you play as a boy repainting the background of the world.",
+        "order": "0",
+        "Date": "April 2025",
+        "language": [
+          "Unreal Blueprints"
+        ],
+        "tools": [
+          "Git",
+          "Unreal Engine"
+        ],
+        "page": "project-pages/tbatb.html"
+      }
+    ]
+  }
+];
