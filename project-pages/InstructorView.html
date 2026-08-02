@@ -56,11 +56,13 @@
         I tested several mobile rendering hooks and found a stable point where the completed VR view could be accessed on the render thread.
         This allowed the system to run directly on the headset while still reusing an existing eye image.
       </p>
-      <div class="local-video-container">
-        <video controls preload="metadata">
-          <source src="../assets/videos/RenderHijackAndroid.mp4" type="video/mp4">
-          Your browser does not support HTML video.
-        </video>
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube.com/embed/febJr7y8K-w" 
+          title="RenderHijackAndroid"
+          frameborder="0" 
+          allowfullscreen>
+        </iframe>
       </div>
       <h2>Mixed-Reality Support</h2>
       <p class="description">
@@ -71,11 +73,13 @@
         Because the camera and rendered eye use different fields of view and lens characteristics, the images require scaling, offsets and distortion correction before they align.
       </p>
       <img src="../assets/images/InstructorMaterial.png" alt="the material graph" class="image">
-      <div class="local-video-container">
-        <video controls preload="metadata">
-          <source src="../assets/videos/RenderHijacking.mp4" type="video/mp4">
-          Your browser does not support HTML video.
-        </video>
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube.com/embed/_wMPNxws3Y0" 
+          title="RenderHijackAndroid"
+          frameborder="0" 
+          allowfullscreen>
+        </iframe>
       </div>
 
       <h2>Result</h2>
