@@ -299,62 +299,11 @@ body::after {
   filter: brightness(1.18) sepia(.12);
 }
 
-.page-layout::before,
-.page-layout::after,
-.content::before,
-.content::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  pointer-events: none;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  opacity: .075;
-  filter: brightness(1.24) sepia(.1);
-}
-.page-layout { position: relative; }
-.page-layout::before {
-  width: 70px;
-  height: 70px;
-  left: -82px;
-  top: 22rem;
-  background-image: url("../assets/decor/leaf3.svg");
-  transform: rotate(-25deg);
-}
-.page-layout::after {
-  width: 58px;
-  height: 58px;
-  right: -68px;
-  top: 54rem;
-  background-image: url("../assets/decor/leaf5.svg");
-  transform: rotate(36deg);
-}
-.content { position: relative; }
-.content::before {
-  width: 54px;
-  height: 54px;
-  right: -44px;
-  top: 34%;
-  background-image: url("../assets/decor/leaf1.svg");
-  transform: rotate(68deg);
-}
-.content::after {
-  width: 48px;
-  height: 48px;
-  left: -34px;
-  top: 72%;
-  background-image: url("../assets/decor/leaf6.svg");
-  transform: rotate(-48deg);
-}
-
 @media (max-width: 900px) {
-  .page-layout::before, .page-layout::after { display: none; }
   .site-header::after, .project-footer::before { width: min(500px, 88vw); }
 }
 @media (max-width: 680px) {
   body::after { width: 260px; right: -145px; opacity: .05; }
-  .content::before, .content::after { opacity: .045; }
   .site-header::after, .project-footer::before { height: 40px; }
 }
 
@@ -446,16 +395,13 @@ body::after,
   letter-spacing: .015em;
 }
 
-.site-nav a:not(:last-child)::after {
-  content: "";
-  display: inline-block;
+.nav-flair {
   flex: 0 0 28px;
   width: 28px;
   height: 20px;
-  margin-left: 17px;
+  display: block;
   background: url("../assets/decor/Accent1.svg") center / contain no-repeat;
   opacity: .58;
-  filter: brightness(1.25) sepia(.18);
   pointer-events: none;
 }
 
@@ -488,10 +434,19 @@ body::after,
     font-size: .88rem;
   }
 
-  .site-nav a:not(:last-child)::after {
-    width: 18px;
-    height: 14px;
-    margin-left: 10px;
-    flex-basis: 18px;
-  }
+  .nav-flair {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 20px;
+  display: block;
+  background: url("../assets/decor/Accent1.svg") center / contain no-repeat;
+  opacity: .58;
+  pointer-events: none;
 }
+
+
+/* Prevent decorative layers from extending the document height. */
+html, body { min-height: 100%; }
+body { overflow-x: clip; }
+.page-layout { overflow: visible; }
+.botanical-background { overflow: clip; }

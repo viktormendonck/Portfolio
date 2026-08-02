@@ -33,3 +33,5 @@ Botanical update:
 - Project heading floral dividers are centered.
 - The homepage receives a denser randomized mix of leaves and larger accents.
 - Size, rotation, mirroring, opacity, side, and vertical placement vary on each load.
+
+Latest fixes: removed legacy pseudo-element leaves that extended page height; navigation ornaments are separate non-clickable elements.

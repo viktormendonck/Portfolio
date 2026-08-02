@@ -294,78 +294,6 @@ body::after {
   filter: brightness(1.18) sepia(.12);
 }
 
-/* Scattered leaf accents. They remain decorative and ignore pointer input. */
-.shell::before,
-.shell::after,
-main::before,
-main::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  pointer-events: none;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  opacity: .085;
-  filter: brightness(1.25) sepia(.1);
-}
-
-.shell::before {
-  width: 76px;
-  height: 76px;
-  left: -86px;
-  top: 28rem;
-  background-image: url("assets/decor/leaf2.svg");
-  transform: rotate(-24deg);
-}
-
-.shell::after {
-  width: 58px;
-  height: 58px;
-  right: -72px;
-  top: 61rem;
-  background-image: url("assets/decor/leaf5.svg");
-  transform: rotate(26deg);
-}
-
-main { position: relative; }
-main::before {
-  width: 68px;
-  height: 68px;
-  right: 4%;
-  top: 43%;
-  background-image: url("assets/decor/leaf1.svg");
-  transform: rotate(72deg);
-}
-
-main::after {
-  width: 50px;
-  height: 50px;
-  left: 2%;
-  top: 76%;
-  background-image: url("assets/decor/leaf6.svg");
-  transform: rotate(-58deg);
-}
-
-@media (max-width: 900px) {
-  .site-header::after,
-  .section-grid::before,
-  .featured::before,
-  .site-footer::before,
-  .project-section .section-heading::before { width: min(500px, 88vw); }
-  .shell::before, .shell::after { display: none; }
-}
-
-@media (max-width: 680px) {
-  body::after { width: 270px; right: -145px; opacity: .055; }
-  .site-header::after { bottom: -25px; }
-  .site-header::after,
-  .section-grid::before,
-  .featured::before,
-  .site-footer::before { height: 40px; }
-  main::before, main::after { opacity: .05; }
-}
-
 /* Randomized botanical background accents */
 .botanical-background {
   position: fixed;
@@ -453,16 +381,13 @@ body::after,
   letter-spacing: .015em;
 }
 
-.site-nav a:not(:last-child)::after {
-  content: "";
-  display: inline-block;
+.nav-flair {
   flex: 0 0 28px;
   width: 28px;
   height: 20px;
-  margin-left: 17px;
+  display: block;
   background: url("assets/decor/Accent1.svg") center / contain no-repeat;
   opacity: .58;
-  filter: brightness(1.25) sepia(.18);
   pointer-events: none;
 }
 
@@ -495,7 +420,19 @@ body::after,
     justify-content: center;
   }
 
-  .site-nav a:not(:last-child)::after {
-    display: none;
-  }
+  .nav-flair {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 20px;
+  display: block;
+  background: url("assets/decor/Accent1.svg") center / contain no-repeat;
+  opacity: .58;
+  pointer-events: none;
 }
+
+
+/* Prevent decorative layers from extending the document height. */
+html, body { min-height: 100%; }
+body { overflow-x: clip; }
+main { overflow: clip; }
+.botanical-background { overflow: clip; }
