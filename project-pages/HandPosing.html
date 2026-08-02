@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hand Posing Tool</title>
+  <link rel="stylesheet" href="template.css" />
+</head>
+<body>
+  <div class="page-layout">
+    <aside class="sidebar">
+      <h2>Hand Posing Tool</h2>
+      <p><strong>Role:</strong> Tools Developer</p>
+      <p><strong>Period:</strong> Feb-Jun 2026</p>
+      <p><strong>Language:</strong> C++</p>
+      <p><strong>Tools:</strong> Unreal Engine, Control Rig, Perforce</p>
+      <p><strong>Employer:</strong> <a href="https://onebonsai.com" target="_blank">OneBonsai</a></p>
+      <p><strong>Blog:</strong> <a href="https://onebonsai.com/blog/an-interns-attempt-at-building-a-hand-posing-system" target="_blank">Development Blog</a></p>
+      <hr />
+      <p>
+        An Unreal Engine editor tool for creating, saving and reusing natural hand poses for interactable VR objects.
+      </p>
+      <hr />
+    </aside>
+
+    <main class="content">
+      <a href="../index.html" class="back-button">← Back to Portfolio</a>
+
+      <h1>Hand Posing Tool</h1>
+
+      <p class="description">
+        This project was to redesign OneBonsai's existing hand-posing workflow.
+        The old system technically worked, but it was cumbersome to use, produced inconsistent poses and required too much manual effort.
+        My goal was to create a faster and more intuitive workflow that could be used across the company's VR projects.
+      </p>
+      <h2>The old workflow</h2>
+        The old workflow used inverse kinematics and a target position for each finger to hit. The issue with this is that it lacks controll for wrapping fringers around objects,
+        which is most of what this system is used for.
+      <h2>Designing the Control Rig</h2>
+      <p class="description">
+        My first prototype recreated the old workflow using inverse kinematics and target controls.
+        Although it worked technically, the controls were too abstract and it was difficult to predict how moving them would affect the final hand.
+        I discarded that version and designed a simpler rig around the controls people actually needed.
+        <br><br>
+        Each finger received a curl value and a restricted rotational control at its base joint.
+        This made the rig easier to understand and reduced the chance of creating physically impossible poses.
+      </p>
+
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube.com/embed/97ocqF5WbRM" 
+          title="HandPosing"
+          frameborder="0" 
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <h2>Automatic Wrapping</h2>
+      <p class="description">
+        To reduce repetitive work, I added a feature that automatically closes the hand around the selected object.
+        This gives the user a useful starting pose instead of requiring every finger to be positioned manually.
+        The result can then be refined with smaller adjustments.
+      </p>
+
+      <!-- Recommended GIF: automatic hand wrapping around two or three differently shaped objects. -->
+       <div class="video-container">
+        <iframe 
+          src="https://www.youtube.com/embed/GNMBQ4RColY" 
+          title="HandPosing"
+          frameborder="0" 
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <h2>Creating and Saving Grab Poses</h2>
+      <p class="description">
+        The editor tool spawns the hand in the correct location, allows the user to define how an object should be held and stores the information needed at runtime.
+        Each grabbable object can contain a pose animation, the relative transform between the hand and object and an interaction state such as holding, using or approaching.
+        <br><br>
+        The most technical part was saving the current skeletal pose.
+        I wrote a C++ function that reads the transform of every hand bone and writes those transforms into a single-frame animation sequence.
+        The tool also stores the relative object transform so the object can snap into the correct position when grabbed in VR.
+      </p>
+
+      <!-- Recommended image: the editor tool UI next to the generated single-frame animation asset in the Content Browser. -->
+
+      <h2>Production Integration</h2>
+      <p class="description">
+        I used Unreal Engine's Class Default Object system to write the generated pose and transform data back onto the selected object.
+        This also had to work when the grab component was inherited from a parent Blueprint rather than placed directly on the object.
+        <br><br>
+        I later moved the system into the company's main branch, fixed mirrored-hand and inheritance issues, improved how poses were replaced or removed and migrated the runtime grab logic out of a large hand Blueprint into a reusable component.
+        I also wrote internal documentation and a public development blog explaining the process.
+      </p>
+
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube.com/embed/FXxbeNb8G9Y" 
+          title="HandPosing"
+          frameborder="0" 
+          allowfullscreen>
+        </iframe>
+      </div>
+
+    </main>
+  </div>
+</body>
+</html>

@@ -16,7 +16,8 @@ const toolColors = {
   "Git": "#f1502f",
   "Blender": "#f5792a",
   "Godot": "#478cbf",
-  "CMake": "#064F8C"
+  "CMake": "#064F8C",
+  "Meta XR": "#0082FB"
 };
 
 fetch('projects.json')
@@ -46,8 +47,11 @@ function renderProjectTypes(projectTypes) {
     const favGroup = document.createElement('div');
     favGroup.className = 'project-group';
 
-    favorites.sort((a, b) => Number(a.order) - Number(b.order))
-             .forEach(project => favGroup.appendChild(createProjectCard(project)));
+    favorites
+      .sort((a, b) => Number(a.order) - Number(b.order))
+      .forEach(project => {
+        favGroup.appendChild(createProjectCard(project));
+      });
 
     favSection.appendChild(favGroup);
     container.appendChild(favSection);
@@ -71,14 +75,16 @@ function renderProjectTypes(projectTypes) {
     const group = document.createElement('div');
     group.className = 'project-group';
 
-    typeGroup.projects.sort((a, b) => Number(a.order) - Number(b.order))
-                      .forEach(project => group.appendChild(createProjectCard(project)));
+    typeGroup.projects
+      .sort((a, b) => Number(a.order) - Number(b.order))
+      .forEach(project => {
+        group.appendChild(createProjectCard(project));
+      });
 
     section.appendChild(group);
     container.appendChild(section);
   });
 }
-
 
 // Render flat filtered projects by language OR tool
 function renderProjectsByFilter(filterType, filterValue) {
@@ -88,101 +94,180 @@ function renderProjectsByFilter(filterType, filterValue) {
   const flatProjects = allProjectTypes.flatMap(group => group.projects);
 
   let filtered = [];
+
   if (filterType === 'language') {
-    filtered = flatProjects.filter(p => Array.isArray(p.language) && p.language.includes(filterValue));
+    filtered = flatProjects.filter(project =>
+      Array.isArray(project.language) &&
+      project.language.includes(filterValue)
+    );
   } else if (filterType === 'tool') {
-    filtered = flatProjects.filter(p => Array.isArray(p.tools) && p.tools.includes(filterValue));
+    filtered = flatProjects.filter(project =>
+      Array.isArray(project.tools) &&
+      project.tools.includes(filterValue)
+    );
   }
 
   if (filtered.length === 0) {
-    // No projects matched, show default view and clear selection
     clearAllSelectedBadges();
     renderProjectTypes(allProjectTypes);
     return;
   }
 
   const heading = document.createElement('h2');
-  if (filterType == "tool"){
+
+  if (filterType === "tool") {
     heading.textContent = `Projects Made With ${filterValue}`;
   } else {
     heading.textContent = `Projects Made In ${filterValue}`;
   }
+
   container.appendChild(heading);
 
   const group = document.createElement('div');
   group.className = 'project-group filtered';
 
-  filtered.sort((a, b) => Number(a.order) - Number(b.order))
-          .forEach(project => {
-            group.appendChild(createProjectCard(project));
-          });
+  filtered
+    .sort((a, b) => Number(a.order) - Number(b.order))
+    .forEach(project => {
+      group.appendChild(createProjectCard(project));
+    });
 
   container.appendChild(group);
 }
 
 // Helper to clear all selected badges
 function clearAllSelectedBadges() {
-  const languageBadges = document.querySelectorAll('.sidebar .sidebar-language.selected');
-  const toolBadges = document.querySelectorAll('.sidebar .sidebar-tool.selected');
+  const languageBadges = document.querySelectorAll(
+    '.sidebar .sidebar-language.selected'
+  );
 
-  languageBadges.forEach(b => b.classList.remove('selected'));
-  toolBadges.forEach(b => b.classList.remove('selected'));
+  const toolBadges = document.querySelectorAll(
+    '.sidebar .sidebar-tool.selected'
+  );
+
+  languageBadges.forEach(badge => {
+    badge.classList.remove('selected');
+  });
+
+  toolBadges.forEach(badge => {
+    badge.classList.remove('selected');
+  });
 }
-
 
 // Create project card (only first language shown)
 function createProjectCard(project) {
   const content = document.createElement('div');
   content.className = 'project';
 
-  let linksHTML = '';
-  if (project.link) linksHTML += `<a href="${project.link}" target="_blank">Project</a>`;
+  const projectLinks = Array.isArray(project.link)
+    ? project.link.filter(Boolean)
+    : [];
+
+  const renderedLinks = projectLinks
+    .map((link, index) => {
+      const url = typeof link === 'string'
+        ? link
+        : link.url;
+
+      const label = typeof link === 'string'
+        ? (
+            projectLinks.length === 1
+              ? 'Project'
+              : `Project ${index + 1}`
+          )
+        : (
+            link.label ||
+            (
+              projectLinks.length === 1
+                ? 'Project'
+                : `Project ${index + 1}`
+            )
+          );
+
+      if (!url) {
+        return '';
+      }
+
+      return `<a href="${url}" target="_blank">${label}</a>`;
+    })
+    .filter(Boolean);
+
   if (project.github) {
-    if (linksHTML) linksHTML += ' | ';
-    linksHTML += `<a href="${project.github}" target="_blank">Code</a>`;
+    renderedLinks.push(
+      `<a href="${project.github}" target="_blank">Code</a>`
+    );
   }
+
+  const linksHTML = renderedLinks.join(' | ');
 
   const imageHTML = project.image
     ? `<img src="${project.image}" alt="${project.title}">`
     : '';
 
-  let firstLang = (Array.isArray(project.language) && project.language.length > 0) ? project.language[0] : null;
+  const firstLang =
+    Array.isArray(project.language) &&
+    project.language.length > 0
+      ? project.language[0]
+      : null;
 
   const languageBadge = firstLang
-    ? `<span class="language-badge" style="background-color: ${languageColors[firstLang] || '#666'}">
+    ? `
+      <span
+        class="language-badge"
+        style="background-color: ${languageColors[firstLang] || '#666'}"
+      >
         ${firstLang}
-      </span>`
+      </span>
+    `
     : '';
 
   content.innerHTML = `
     ${imageHTML}
     <h3>${project.title}</h3>
+
     <div class="meta-line">
-      <p><strong>Date:</strong> ${project.Date || "Unknown"}</p>
+      <p>
+        <strong>Date:</strong>
+        ${project.Date || "Unknown"}
+      </p>
+
       ${languageBadge}
     </div>
+
     <p>${project.description}</p>
-    <p>${linksHTML}</p>
+
+    ${linksHTML ? `<p>${linksHTML}</p>` : ''}
   `;
 
   if (project.page) {
     const linkWrapper = document.createElement('a');
+
     linkWrapper.href = project.page;
     linkWrapper.style.textDecoration = 'none';
     linkWrapper.style.color = 'inherit';
+
     linkWrapper.appendChild(content);
+
     return linkWrapper;
-  } else {
-    return content;
   }
+
+  return content;
 }
 
 // Setup sidebar filter handlers for language and tool badges
 function setupSidebarFilters() {
-  const languageBadges = document.querySelectorAll('.sidebar .sidebar-language');
-  const toolBadges = document.querySelectorAll('.sidebar .sidebar-tool');
+  const languageBadges = document.querySelectorAll(
+    '.sidebar .sidebar-language'
+  );
 
-  let currentFilter = { type: null, value: null };
+  const toolBadges = document.querySelectorAll(
+    '.sidebar .sidebar-tool'
+  );
+
+  let currentFilter = {
+    type: null,
+    value: null
+  };
 
   // Determine used languages/tools from project data
   const usedLanguages = new Set();
@@ -191,18 +276,28 @@ function setupSidebarFilters() {
   allProjectTypes.forEach(group => {
     group.projects.forEach(project => {
       if (Array.isArray(project.language)) {
-        project.language.forEach(lang => usedLanguages.add(lang));
+        project.language.forEach(language => {
+          usedLanguages.add(language);
+        });
       }
+
       if (Array.isArray(project.tools)) {
-        project.tools.forEach(tool => usedTools.add(tool));
+        project.tools.forEach(tool => {
+          usedTools.add(tool);
+        });
       }
     });
   });
 
   // Clear selection styling
   function clearAllSelected() {
-    languageBadges.forEach(b => b.classList.remove('selected'));
-    toolBadges.forEach(b => b.classList.remove('selected'));
+    languageBadges.forEach(badge => {
+      badge.classList.remove('selected');
+    });
+
+    toolBadges.forEach(badge => {
+      badge.classList.remove('selected');
+    });
   }
 
   // Badge click handler
@@ -210,14 +305,29 @@ function setupSidebarFilters() {
     const filterValue = badge.textContent.trim();
 
     badge.addEventListener('click', () => {
-      if (currentFilter.type === filterType && currentFilter.value === filterValue) {
+      const sameFilterSelected =
+        currentFilter.type === filterType &&
+        currentFilter.value === filterValue;
+
+      if (sameFilterSelected) {
         badge.classList.remove('selected');
-        currentFilter = { type: null, value: null };
+
+        currentFilter = {
+          type: null,
+          value: null
+        };
+
         renderProjectTypes(allProjectTypes);
       } else {
         clearAllSelected();
+
         badge.classList.add('selected');
-        currentFilter = { type: filterType, value: filterValue };
+
+        currentFilter = {
+          type: filterType,
+          value: filterValue
+        };
+
         renderProjectsByFilter(filterType, filterValue);
       }
     });
@@ -225,8 +335,9 @@ function setupSidebarFilters() {
 
   // Set up language badge interactivity
   languageBadges.forEach(badge => {
-    const lang = badge.textContent.trim();
-    if (!usedLanguages.has(lang)) {
+    const language = badge.textContent.trim();
+
+    if (!usedLanguages.has(language)) {
       badge.style.pointerEvents = 'none';
       badge.style.cursor = 'default';
     } else {
@@ -238,6 +349,7 @@ function setupSidebarFilters() {
   // Set up tool badge interactivity
   toolBadges.forEach(badge => {
     const tool = badge.textContent.trim();
+
     if (!usedTools.has(tool)) {
       badge.style.pointerEvents = 'none';
       badge.style.cursor = 'default';
@@ -247,4 +359,3 @@ function setupSidebarFilters() {
     }
   });
 }
-
